@@ -1,0 +1,33 @@
+class Solution {
+    public boolean checkPossibility(int[] nums) {
+        if(nums.length == 0) return true;
+        
+        boolean flag = true;
+        int current_max = nums[0];
+        
+        for(int i = 1; i < nums.length; i++){
+            int temp_1 = nums[i];
+            System.out.println(current_max + " " + flag);
+            if(temp_1 >= current_max){
+                current_max = temp_1;
+                continue;
+            }else{
+                if(!flag){
+                    return false;
+                }else{
+                    flag = false;
+                    continue;
+                }
+            }
+        }
+        
+        return true;
+    }
+}
+
+public class problem_665{
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        System.out.println(sol.checkPossibility(new int[]{4,3,2}));
+    }
+}

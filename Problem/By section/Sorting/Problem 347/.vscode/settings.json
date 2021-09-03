@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "*.rmd": "markdown",
+        "*.Rmd": "rmarkdown",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "__hash_table": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp"
+    }
+}

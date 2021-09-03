@@ -1,0 +1,11 @@
+{
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "files.associations": {
+        "*.rmd": "markdown",
+        "*.Rmd": "rmarkdown",
+        "iostream": "cpp",
+        "iosfwd": "cpp",
+        "string": "cpp",
+        "vector": "cpp"
+    }
+}

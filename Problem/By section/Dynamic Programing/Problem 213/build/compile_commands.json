@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/kecheng_ye/Documents/Leetcode/Problem/By section/Dynamic Programing/Problem 213/build",
+  "command": "/usr/bin/clang++   -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -std=gnu++11 -o CMakeFiles/Leetcode.dir/problem_213.cpp.o -c \"/Users/kecheng_ye/Documents/Leetcode/Problem/By section/Dynamic Programing/Problem 213/problem_213.cpp\"",
+  "file": "/Users/kecheng_ye/Documents/Leetcode/Problem/By section/Dynamic Programing/Problem 213/problem_213.cpp"
+}
+]

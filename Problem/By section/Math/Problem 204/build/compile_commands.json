@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/kecheng_ye/Documents/Leetcode/Problem/By section/Math/Problem 204/build",
+  "command": "/usr/bin/clang++   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -std=gnu++11 -o CMakeFiles/Leetcode.dir/problem_204.cpp.o -c \"/Users/kecheng_ye/Documents/Leetcode/Problem/By section/Math/Problem 204/problem_204.cpp\"",
+  "file": "/Users/kecheng_ye/Documents/Leetcode/Problem/By section/Math/Problem 204/problem_204.cpp"
+}
+]

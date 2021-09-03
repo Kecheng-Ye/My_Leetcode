@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.rmd": "markdown",
+        "*.Rmd": "rmarkdown",
+        "iostream": "cpp",
+        "*.tcc": "cpp",
+        "bitset": "cpp",
+        "vector": "cpp"
+    }
+}

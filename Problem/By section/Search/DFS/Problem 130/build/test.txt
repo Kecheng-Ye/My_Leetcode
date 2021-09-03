@@ -1,0 +1,2183 @@
+start dfs 0 0
+start at 0 0
+meet boundary
+  start at -1 0
+  Return at -1 0
+  start at 1 0
+  Return at 1 0 with false true
+  start at 0 1
+  Return at 0 1 with false true
+  start at 0 -1
+  Return at 0 -1
+  mark 0 0as X
+finsih at 0 0
+start dfs 0 2
+start at 0 2
+meet boundary
+  start at -1 2
+  Return at -1 2
+  start at 1 2
+  Return at 1 2 with false true
+  start at 0 3
+meet boundary
+    start at -1 3
+    Return at -1 3
+    start at 1 3
+      start at 0 3
+      Return at 0 3 with true false
+      start at 2 3
+        start at 1 3
+        Return at 1 3 with true false
+        start at 3 3
+          start at 2 3
+          Return at 2 3 with true false
+          start at 4 3
+          Return at 4 3 with false true
+          start at 3 4
+            start at 2 4
+              start at 1 4
+                start at 0 4
+                Return at 0 4 with false true
+                start at 2 4
+                Return at 2 4 with true false
+                start at 1 5
+                Return at 1 5 with false true
+                start at 1 3
+                Return at 1 3 with true false
+                mark 1 4as X
+              finsih at 1 4
+              start at 3 4
+              Return at 3 4 with true false
+              start at 2 5
+              Return at 2 5 with false true
+              start at 2 3
+              Return at 2 3 with true false
+              mark 2 4as X
+            finsih at 2 4
+            start at 4 4
+            Return at 4 4 with false true
+            start at 3 5
+            Return at 3 5 with false true
+            start at 3 3
+            Return at 3 3 with true false
+            mark 3 4as X
+          finsih at 3 4
+          start at 3 2
+            start at 2 2
+              start at 1 2
+              Return at 1 2 with false true
+              start at 3 2
+              Return at 3 2 with true false
+              start at 2 3
+              Return at 2 3 with true false
+              start at 2 1
+              Return at 2 1 with false true
+              mark 2 2as X
+            finsih at 2 2
+            start at 4 2
+              start at 3 2
+              Return at 3 2 with true false
+              start at 5 2
+                start at 4 2
+                Return at 4 2 with true false
+                start at 6 2
+                  start at 5 2
+                  Return at 5 2 with true false
+                  start at 7 2
+                    start at 6 2
+                    Return at 6 2 with true false
+                    start at 8 2
+                      start at 7 2
+                      Return at 7 2 with true false
+                      start at 9 2
+                        start at 8 2
+                        Return at 8 2 with true false
+                        start at 10 2
+                        Return at 10 2 with false true
+                        start at 9 3
+                        Return at 9 3 with false true
+                        start at 9 1
+                          start at 8 1
+                            start at 7 1
+                              start at 6 1
+                                start at 5 1
+                                  start at 4 1
+                                  Return at 4 1 with false true
+                                  start at 6 1
+                                  Return at 6 1 with true false
+                                  start at 5 2
+                                  Return at 5 2 with true false
+                                  start at 5 0
+                                  Return at 5 0 with false true
+                                  mark 5 1as X
+                                finsih at 5 1
+                                start at 7 1
+                                Return at 7 1 with true false
+                                start at 6 2
+                                Return at 6 2 with true false
+                                start at 6 0
+                                Return at 6 0 with false true
+                                mark 6 1as X
+                              finsih at 6 1
+                              start at 8 1
+                              Return at 8 1 with true false
+                              start at 7 2
+                              Return at 7 2 with true false
+                              start at 7 0
+                              Return at 7 0 with false true
+                              mark 7 1as X
+                            finsih at 7 1
+                            start at 9 1
+                            Return at 9 1 with true false
+                            start at 8 2
+                            Return at 8 2 with true false
+                            start at 8 0
+                            Return at 8 0 with false true
+                            mark 8 1as X
+                          finsih at 8 1
+                          start at 10 1
+                            start at 9 1
+                            Return at 9 1 with true false
+                            start at 11 1
+                            Return at 11 1 with false true
+                            start at 10 2
+                            Return at 10 2 with false true
+                            start at 10 0
+                            Return at 10 0 with false true
+                            mark 10 1as X
+                          finsih at 10 1
+                          start at 9 2
+                          Return at 9 2 with true false
+                          start at 9 0
+meet boundary
+                            start at 8 0
+                            Return at 8 0 with false true
+                            start at 10 0
+                            Return at 10 0 with false true
+                            start at 9 1
+                            Return at 9 1 with true false
+                            start at 9 -1
+                            Return at 9 -1
+                            mark 9 0as X
+                          finsih at 9 0
+                          mark 9 1as X
+                        finsih at 9 1
+                        mark 9 2as X
+                      finsih at 9 2
+                      start at 8 3
+                      Return at 8 3 with false true
+                      start at 8 1
+                      Return at 8 1 with true false
+                      mark 8 2as X
+                    finsih at 8 2
+                    start at 7 3
+                      start at 6 3
+                        start at 5 3
+                        Return at 5 3 with false true
+                        start at 7 3
+                        Return at 7 3 with true false
+                        start at 6 4
+                        Return at 6 4 with false true
+                        start at 6 2
+                        Return at 6 2 with true false
+                        mark 6 3as X
+                      finsih at 6 3
+                      start at 8 3
+                      Return at 8 3 with false true
+                      start at 7 4
+                      Return at 7 4 with false true
+                      start at 7 2
+                      Return at 7 2 with true false
+                      mark 7 3as X
+                    finsih at 7 3
+                    start at 7 1
+                    Return at 7 1 with true false
+                    mark 7 2as X
+                  finsih at 7 2
+                  start at 6 3
+                  Return at 6 3 with true false
+                  start at 6 1
+                  Return at 6 1 with true false
+                  mark 6 2as X
+                finsih at 6 2
+                start at 5 3
+                Return at 5 3 with false true
+                start at 5 1
+                Return at 5 1 with true false
+                mark 5 2as X
+              finsih at 5 2
+              start at 4 3
+              Return at 4 3 with false true
+              start at 4 1
+              Return at 4 1 with false true
+              mark 4 2as X
+            finsih at 4 2
+            start at 3 3
+            Return at 3 3 with true false
+            start at 3 1
+            Return at 3 1 with false true
+            mark 3 2as X
+          finsih at 3 2
+          mark 3 3as X
+        finsih at 3 3
+        start at 2 4
+        Return at 2 4 with true false
+        start at 2 2
+        Return at 2 2 with true false
+        mark 2 3as X
+      finsih at 2 3
+      start at 1 4
+      Return at 1 4 with true false
+      start at 1 2
+      Return at 1 2 with false true
+      mark 1 3as X
+    finsih at 1 3
+    start at 0 4
+    Return at 0 4 with false true
+    start at 0 2
+    Return at 0 2 with true false
+    mark 0 3as X
+  finsih at 0 3
+  start at 0 1
+  Return at 0 1 with false true
+  mark 0 2as X
+finsih at 0 2
+start dfs 0 7
+start at 0 7
+meet boundary
+  start at -1 7
+  Return at -1 7
+  start at 1 7
+    start at 0 7
+    Return at 0 7 with true false
+    start at 2 7
+    Return at 2 7 with false true
+    start at 1 8
+      start at 0 8
+meet boundary
+        start at -1 8
+        Return at -1 8
+        start at 1 8
+        Return at 1 8 with true false
+        start at 0 9
+meet boundary
+          start at -1 9
+          Return at -1 9
+          start at 1 9
+          Return at 1 9 with false true
+          start at 0 10
+meet boundary
+            start at -1 10
+            Return at -1 10
+            start at 1 10
+              start at 0 10
+              Return at 0 10 with true false
+              start at 2 10
+                start at 1 10
+                Return at 1 10 with true false
+                start at 3 10
+                Return at 3 10 with false true
+                start at 2 11
+                  start at 1 11
+                  Return at 1 11 with false true
+                  start at 3 11
+                  Return at 3 11 with false true
+                  start at 2 12
+                    start at 1 12
+                      start at 0 12
+                      Return at 0 12 with false true
+                      start at 2 12
+                      Return at 2 12 with true false
+                      start at 1 13
+                      Return at 1 13 with false true
+                      start at 1 11
+                      Return at 1 11 with false true
+                      mark 1 12as X
+                    finsih at 1 12
+                    start at 3 12
+                    Return at 3 12 with false true
+                    start at 2 13
+                      start at 1 13
+                      Return at 1 13 with false true
+                      start at 3 13
+                        start at 2 13
+                        Return at 2 13 with true false
+                        start at 4 13
+                        Return at 4 13 with false true
+                        start at 3 14
+                          start at 2 14
+                          Return at 2 14 with false true
+                          start at 4 14
+                            start at 3 14
+                            Return at 3 14 with true false
+                            start at 5 14
+                              start at 4 14
+                              Return at 4 14 with true false
+                              start at 6 14
+                              Return at 6 14 with false true
+                              start at 5 15
+                              Return at 5 15 with false true
+                              start at 5 13
+                                start at 4 13
+                                Return at 4 13 with false true
+                                start at 6 13
+                                  start at 5 13
+                                  Return at 5 13 with true false
+                                  start at 7 13
+                                  Return at 7 13 with false true
+                                  start at 6 14
+                                  Return at 6 14 with false true
+                                  start at 6 12
+                                    start at 5 12
+                                    Return at 5 12 with false true
+                                    start at 7 12
+                                    Return at 7 12 with false true
+                                    start at 6 13
+                                    Return at 6 13 with true false
+                                    start at 6 11
+                                    Return at 6 11 with false true
+                                    mark 6 12as X
+                                  finsih at 6 12
+                                  mark 6 13as X
+                                finsih at 6 13
+                                start at 5 14
+                                Return at 5 14 with true false
+                                start at 5 12
+                                Return at 5 12 with false true
+                                mark 5 13as X
+                              finsih at 5 13
+                              mark 5 14as X
+                            finsih at 5 14
+                            start at 4 15
+                              start at 3 15
+                              Return at 3 15 with false true
+                              start at 5 15
+                              Return at 5 15 with false true
+                              start at 4 16
+                                start at 3 16
+                                  start at 2 16
+                                  Return at 2 16 with false true
+                                  start at 4 16
+                                  Return at 4 16 with true false
+                                  start at 3 17
+                                  Return at 3 17 with false true
+                                  start at 3 15
+                                  Return at 3 15 with false true
+                                  mark 3 16as X
+                                finsih at 3 16
+                                start at 5 16
+                                  start at 4 16
+                                  Return at 4 16 with true false
+                                  start at 6 16
+                                    start at 5 16
+                                    Return at 5 16 with true false
+                                    start at 7 16
+                                      start at 6 16
+                                      Return at 6 16 with true false
+                                      start at 8 16
+                                        start at 7 16
+                                        Return at 7 16 with true false
+                                        start at 9 16
+                                          start at 8 16
+                                          Return at 8 16 with true false
+                                          start at 10 16
+                                          Return at 10 16 with false true
+                                          start at 9 17
+                                            start at 8 17
+                                            Return at 8 17 with false true
+                                            start at 10 17
+                                              start at 9 17
+                                              Return at 9 17 with true false
+                                              start at 11 17
+                                                start at 10 17
+                                                Return at 10 17 with true false
+                                                start at 12 17
+                                                  start at 11 17
+                                                  Return at 11 17 with true false
+                                                  start at 13 17
+                                                    start at 12 17
+                                                    Return at 12 17 with true false
+                                                    start at 14 17
+                                                      start at 13 17
+                                                      Return at 13 17 with true false
+                                                      start at 15 17
+                                                        start at 14 17
+                                                        Return at 14 17 with true false
+                                                        start at 16 17
+                                                        Return at 16 17 with false true
+                                                        start at 15 18
+                                                          start at 14 18
+                                                          Return at 14 18 with false true
+                                                          start at 16 18
+                                                          Return at 16 18 with false true
+                                                          start at 15 19
+                                                          Return at 15 19 with false true
+                                                          start at 15 17
+                                                          Return at 15 17 with true false
+                                                          mark 15 18as X
+                                                        finsih at 15 18
+                                                        start at 15 16
+                                                          start at 14 16
+                                                          Return at 14 16 with false true
+                                                          start at 16 16
+                                                            start at 15 16
+                                                            Return at 15 16 with true false
+                                                            start at 17 16
+                                                              start at 16 16
+                                                              Return at 16 16 with true false
+                                                              start at 18 16
+                                                                start at 17 16
+                                                                Return at 17 16 with true false
+                                                                start at 19 16
+                                                                Return at 19 16 with false true
+                                                                start at 18 17
+                                                                  start at 17 17
+                                                                    start at 16 17
+                                                                    Return at 16 17 with false true
+                                                                    start at 18 17
+                                                                    Return at 18 17 with true false
+                                                                    start at 17 18
+                                                                      start at 16 18
+                                                                      Return at 16 18 with false true
+                                                                      start at 18 18
+                                                                      Return at 18 18 with false true
+                                                                      start at 17 19
+meet boundary
+                                                                        start at 16 19
+                                                                        Return at 16 19 with false true
+                                                                        start at 18 19
+                                                                        Return at 18 19 with false true
+                                                                        start at 17 20
+                                                                        Return at 17 20
+                                                                        start at 17 18
+                                                                        Return at 17 18 with true false
+                                                                        mark 17 19as X
+                                                                      finsih at 17 19
+                                                                      start at 17 17
+                                                                      Return at 17 17 with true false
+                                                                      mark 17 18as X
+                                                                    finsih at 17 18
+                                                                    start at 17 16
+                                                                    Return at 17 16 with true false
+                                                                    mark 17 17as X
+                                                                  finsih at 17 17
+                                                                  start at 19 17
+meet boundary
+                                                                    start at 18 17
+                                                                    Return at 18 17 with true false
+                                                                    start at 20 17
+                                                                    Return at 20 17
+                                                                    start at 19 18
+meet boundary
+                                                                      start at 18 18
+                                                                      Return at 18 18 with false true
+                                                                      start at 20 18
+                                                                      Return at 20 18
+                                                                      start at 19 19
+meet boundary
+                                                                        start at 18 19
+                                                                        Return at 18 19 with false true
+                                                                        start at 20 19
+                                                                        Return at 20 19
+                                                                        start at 19 20
+                                                                        Return at 19 20
+                                                                        start at 19 18
+                                                                        Return at 19 18 with true false
+                                                                        mark 19 19as X
+                                                                      finsih at 19 19
+                                                                      start at 19 17
+                                                                      Return at 19 17 with true false
+                                                                      mark 19 18as X
+                                                                    finsih at 19 18
+                                                                    start at 19 16
+                                                                    Return at 19 16 with false true
+                                                                    mark 19 17as X
+                                                                  finsih at 19 17
+                                                                  start at 18 18
+                                                                  Return at 18 18 with false true
+                                                                  start at 18 16
+                                                                  Return at 18 16 with true false
+                                                                  mark 18 17as X
+                                                                finsih at 18 17
+                                                                start at 18 15
+                                                                  start at 17 15
+                                                                  Return at 17 15 with false true
+                                                                  start at 19 15
+                                                                  Return at 19 15 with false true
+                                                                  start at 18 16
+                                                                  Return at 18 16 with true false
+                                                                  start at 18 14
+                                                                  Return at 18 14 with false true
+                                                                  mark 18 15as X
+                                                                finsih at 18 15
+                                                                mark 18 16as X
+                                                              finsih at 18 16
+                                                              start at 17 17
+                                                              Return at 17 17 with true false
+                                                              start at 17 15
+                                                              Return at 17 15 with false true
+                                                              mark 17 16as X
+                                                            finsih at 17 16
+                                                            start at 16 17
+                                                            Return at 16 17 with false true
+                                                            start at 16 15
+                                                              start at 15 15
+                                                              Return at 15 15 with false true
+                                                              start at 17 15
+                                                              Return at 17 15 with false true
+                                                              start at 16 16
+                                                              Return at 16 16 with true false
+                                                              start at 16 14
+                                                              Return at 16 14 with false true
+                                                              mark 16 15as X
+                                                            finsih at 16 15
+                                                            mark 16 16as X
+                                                          finsih at 16 16
+                                                          start at 15 17
+                                                          Return at 15 17 with true false
+                                                          start at 15 15
+                                                          Return at 15 15 with false true
+                                                          mark 15 16as X
+                                                        finsih at 15 16
+                                                        mark 15 17as X
+                                                      finsih at 15 17
+                                                      start at 14 18
+                                                      Return at 14 18 with false true
+                                                      start at 14 16
+                                                      Return at 14 16 with false true
+                                                      mark 14 17as X
+                                                    finsih at 14 17
+                                                    start at 13 18
+                                                      start at 12 18
+                                                        start at 11 18
+                                                        Return at 11 18 with false true
+                                                        start at 13 18
+                                                        Return at 13 18 with true false
+                                                        start at 12 19
+                                                        Return at 12 19 with false true
+                                                        start at 12 17
+                                                        Return at 12 17 with true false
+                                                        mark 12 18as X
+                                                      finsih at 12 18
+                                                      start at 14 18
+                                                      Return at 14 18 with false true
+                                                      start at 13 19
+meet boundary
+                                                        start at 12 19
+                                                        Return at 12 19 with false true
+                                                        start at 14 19
+meet boundary
+                                                          start at 13 19
+                                                          Return at 13 19 with true false
+                                                          start at 15 19
+                                                          Return at 15 19 with false true
+                                                          start at 14 20
+                                                          Return at 14 20
+                                                          start at 14 18
+                                                          Return at 14 18 with false true
+                                                          mark 14 19as X
+                                                        finsih at 14 19
+                                                        start at 13 20
+                                                        Return at 13 20
+                                                        start at 13 18
+                                                        Return at 13 18 with true false
+                                                        mark 13 19as X
+                                                      finsih at 13 19
+                                                      start at 13 17
+                                                      Return at 13 17 with true false
+                                                      mark 13 18as X
+                                                    finsih at 13 18
+                                                    start at 13 16
+                                                    Return at 13 16 with false true
+                                                    mark 13 17as X
+                                                  finsih at 13 17
+                                                  start at 12 18
+                                                  Return at 12 18 with true false
+                                                  start at 12 16
+                                                  Return at 12 16 with false true
+                                                  mark 12 17as X
+                                                finsih at 12 17
+                                                start at 11 18
+                                                Return at 11 18 with false true
+                                                start at 11 16
+                                                  start at 10 16
+                                                  Return at 10 16 with false true
+                                                  start at 12 16
+                                                  Return at 12 16 with false true
+                                                  start at 11 17
+                                                  Return at 11 17 with true false
+                                                  start at 11 15
+                                                    start at 10 15
+                                                    Return at 10 15 with false true
+                                                    start at 12 15
+                                                      start at 11 15
+                                                      Return at 11 15 with true false
+                                                      start at 13 15
+                                                      Return at 13 15 with false true
+                                                      start at 12 16
+                                                      Return at 12 16 with false true
+                                                      start at 12 14
+                                                      Return at 12 14 with false true
+                                                      mark 12 15as X
+                                                    finsih at 12 15
+                                                    start at 11 16
+                                                    Return at 11 16 with true false
+                                                    start at 11 14
+                                                    Return at 11 14 with false true
+                                                    mark 11 15as X
+                                                  finsih at 11 15
+                                                  mark 11 16as X
+                                                finsih at 11 16
+                                                mark 11 17as X
+                                              finsih at 11 17
+                                              start at 10 18
+                                                start at 9 18
+                                                Return at 9 18 with false true
+                                                start at 11 18
+                                                Return at 11 18 with false true
+                                                start at 10 19
+meet boundary
+                                                  start at 9 19
+meet boundary
+                                                    start at 8 19
+                                                    Return at 8 19 with false true
+                                                    start at 10 19
+                                                    Return at 10 19 with true false
+                                                    start at 9 20
+                                                    Return at 9 20
+                                                    start at 9 18
+                                                    Return at 9 18 with false true
+                                                    mark 9 19as X
+                                                  finsih at 9 19
+                                                  start at 11 19
+meet boundary
+                                                    start at 10 19
+                                                    Return at 10 19 with true false
+                                                    start at 12 19
+                                                    Return at 12 19 with false true
+                                                    start at 11 20
+                                                    Return at 11 20
+                                                    start at 11 18
+                                                    Return at 11 18 with false true
+                                                    mark 11 19as X
+                                                  finsih at 11 19
+                                                  start at 10 20
+                                                  Return at 10 20
+                                                  start at 10 18
+                                                  Return at 10 18 with true false
+                                                  mark 10 19as X
+                                                finsih at 10 19
+                                                start at 10 17
+                                                Return at 10 17 with true false
+                                                mark 10 18as X
+                                              finsih at 10 18
+                                              start at 10 16
+                                              Return at 10 16 with false true
+                                              mark 10 17as X
+                                            finsih at 10 17
+                                            start at 9 18
+                                            Return at 9 18 with false true
+                                            start at 9 16
+                                            Return at 9 16 with true false
+                                            mark 9 17as X
+                                          finsih at 9 17
+                                          start at 9 15
+                                            start at 8 15
+                                              start at 7 15
+                                              Return at 7 15 with false true
+                                              start at 9 15
+                                              Return at 9 15 with true false
+                                              start at 8 16
+                                              Return at 8 16 with true false
+                                              start at 8 14
+                                                start at 7 14
+                                                Return at 7 14 with false true
+                                                start at 9 14
+                                                  start at 8 14
+                                                  Return at 8 14 with true false
+                                                  start at 10 14
+                                                    start at 9 14
+                                                    Return at 9 14 with true false
+                                                    start at 11 14
+                                                    Return at 11 14 with false true
+                                                    start at 10 15
+                                                    Return at 10 15 with false true
+                                                    start at 10 13
+                                                      start at 9 13
+                                                      Return at 9 13 with false true
+                                                      start at 11 13
+                                                      Return at 11 13 with false true
+                                                      start at 10 14
+                                                      Return at 10 14 with true false
+                                                      start at 10 12
+                                                      Return at 10 12 with false true
+                                                      mark 10 13as X
+                                                    finsih at 10 13
+                                                    mark 10 14as X
+                                                  finsih at 10 14
+                                                  start at 9 15
+                                                  Return at 9 15 with true false
+                                                  start at 9 13
+                                                  Return at 9 13 with false true
+                                                  mark 9 14as X
+                                                finsih at 9 14
+                                                start at 8 15
+                                                Return at 8 15 with true false
+                                                start at 8 13
+                                                  start at 7 13
+                                                  Return at 7 13 with false true
+                                                  start at 9 13
+                                                  Return at 9 13 with false true
+                                                  start at 8 14
+                                                  Return at 8 14 with true false
+                                                  start at 8 12
+                                                    start at 7 12
+                                                    Return at 7 12 with false true
+                                                    start at 9 12
+                                                    Return at 9 12 with false true
+                                                    start at 8 13
+                                                    Return at 8 13 with true false
+                                                    start at 8 11
+                                                      start at 7 11
+                                                        start at 6 11
+                                                        Return at 6 11 with false true
+                                                        start at 8 11
+                                                        Return at 8 11 with true false
+                                                        start at 7 12
+                                                        Return at 7 12 with false true
+                                                        start at 7 10
+                                                        Return at 7 10 with false true
+                                                        mark 7 11as X
+                                                      finsih at 7 11
+                                                      start at 9 11
+                                                      Return at 9 11 with false true
+                                                      start at 8 12
+                                                      Return at 8 12 with true false
+                                                      start at 8 10
+                                                        start at 7 10
+                                                        Return at 7 10 with false true
+                                                        start at 9 10
+                                                        Return at 9 10 with false true
+                                                        start at 8 11
+                                                        Return at 8 11 with true false
+                                                        start at 8 9
+                                                          start at 7 9
+                                                            start at 6 9
+                                                              start at 5 9
+                                                              Return at 5 9 with false true
+                                                              start at 7 9
+                                                              Return at 7 9 with true false
+                                                              start at 6 10
+                                                                start at 5 10
+                                                                Return at 5 10 with false true
+                                                                start at 7 10
+                                                                Return at 7 10 with false true
+                                                                start at 6 11
+                                                                Return at 6 11 with false true
+                                                                start at 6 9
+                                                                Return at 6 9 with true false
+                                                                mark 6 10as X
+                                                              finsih at 6 10
+                                                              start at 6 8
+                                                                start at 5 8
+                                                                  start at 4 8
+                                                                    start at 3 8
+                                                                      start at 2 8
+                                                                      Return at 2 8 with false true
+                                                                      start at 4 8
+                                                                      Return at 4 8 with true false
+                                                                      start at 3 9
+                                                                        start at 2 9
+                                                                          start at 1 9
+                                                                          Return at 1 9 with false true
+                                                                          start at 3 9
+                                                                          Return at 3 9 with true false
+                                                                          start at 2 10
+                                                                          Return at 2 10 with true false
+                                                                          start at 2 8
+                                                                          Return at 2 8 with false true
+                                                                          mark 2 9as X
+                                                                        finsih at 2 9
+                                                                        start at 4 9
+                                                                          start at 3 9
+                                                                          Return at 3 9 with true false
+                                                                          start at 5 9
+                                                                          Return at 5 9 with false true
+                                                                          start at 4 10
+                                                                          Return at 4 10 with false true
+                                                                          start at 4 8
+                                                                          Return at 4 8 with true false
+                                                                          mark 4 9as X
+                                                                        finsih at 4 9
+                                                                        start at 3 10
+                                                                        Return at 3 10 with false true
+                                                                        start at 3 8
+                                                                        Return at 3 8 with true false
+                                                                        mark 3 9as X
+                                                                      finsih at 3 9
+                                                                      start at 3 7
+                                                                        start at 2 7
+                                                                        Return at 2 7 with false true
+                                                                        start at 4 7
+                                                                          start at 3 7
+                                                                          Return at 3 7 with true false
+                                                                          start at 5 7
+                                                                            start at 4 7
+                                                                            Return at 4 7 with true false
+                                                                            start at 6 7
+                                                                              start at 5 7
+                                                                              Return at 5 7 with true false
+                                                                              start at 7 7
+                                                                              Return at 7 7 with false true
+                                                                              start at 6 8
+                                                                              Return at 6 8 with true false
+                                                                              start at 6 6
+                                                                                start at 5 6
+                                                                                  start at 4 6
+                                                                                  Return at 4 6 with false true
+                                                                                  start at 6 6
+                                                                                  Return at 6 6 with true false
+                                                                                  start at 5 7
+                                                                                  Return at 5 7 with true false
+                                                                                  start at 5 5
+                                                                                  Return at 5 5 with false true
+                                                                                  mark 5 6as X
+                                                                                finsih at 5 6
+                                                                                start at 7 6
+                                                                                Return at 7 6 with false true
+                                                                                start at 6 7
+                                                                                Return at 6 7 with true false
+                                                                                start at 6 5
+                                                                                Return at 6 5 with false true
+                                                                                mark 6 6as X
+                                                                              finsih at 6 6
+                                                                              mark 6 7as X
+                                                                            finsih at 6 7
+                                                                            start at 5 8
+                                                                            Return at 5 8 with true false
+                                                                            start at 5 6
+                                                                            Return at 5 6 with true false
+                                                                            mark 5 7as X
+                                                                          finsih at 5 7
+                                                                          start at 4 8
+                                                                          Return at 4 8 with true false
+                                                                          start at 4 6
+                                                                          Return at 4 6 with false true
+                                                                          mark 4 7as X
+                                                                        finsih at 4 7
+                                                                        start at 3 8
+                                                                        Return at 3 8 with true false
+                                                                        start at 3 6
+                                                                        Return at 3 6 with false true
+                                                                        mark 3 7as X
+                                                                      finsih at 3 7
+                                                                      mark 3 8as X
+                                                                    finsih at 3 8
+                                                                    start at 5 8
+                                                                    Return at 5 8 with true false
+                                                                    start at 4 9
+                                                                    Return at 4 9 with true false
+                                                                    start at 4 7
+                                                                    Return at 4 7 with true false
+                                                                    mark 4 8as X
+                                                                  finsih at 4 8
+                                                                  start at 6 8
+                                                                  Return at 6 8 with true false
+                                                                  start at 5 9
+                                                                  Return at 5 9 with false true
+                                                                  start at 5 7
+                                                                  Return at 5 7 with true false
+                                                                  mark 5 8as X
+                                                                finsih at 5 8
+                                                                start at 7 8
+                                                                Return at 7 8 with false true
+                                                                start at 6 9
+                                                                Return at 6 9 with true false
+                                                                start at 6 7
+                                                                Return at 6 7 with true false
+                                                                mark 6 8as X
+                                                              finsih at 6 8
+                                                              mark 6 9as X
+                                                            finsih at 6 9
+                                                            start at 8 9
+                                                            Return at 8 9 with true false
+                                                            start at 7 10
+                                                            Return at 7 10 with false true
+                                                            start at 7 8
+                                                            Return at 7 8 with false true
+                                                            mark 7 9as X
+                                                          finsih at 7 9
+                                                          start at 9 9
+                                                          Return at 9 9 with false true
+                                                          start at 8 10
+                                                          Return at 8 10 with true false
+                                                          start at 8 8
+                                                            start at 7 8
+                                                            Return at 7 8 with false true
+                                                            start at 9 8
+                                                            Return at 9 8 with false true
+                                                            start at 8 9
+                                                            Return at 8 9 with true false
+                                                            start at 8 7
+                                                            Return at 8 7 with false true
+                                                            mark 8 8as X
+                                                          finsih at 8 8
+                                                          mark 8 9as X
+                                                        finsih at 8 9
+                                                        mark 8 10as X
+                                                      finsih at 8 10
+                                                      mark 8 11as X
+                                                    finsih at 8 11
+                                                    mark 8 12as X
+                                                  finsih at 8 12
+                                                  mark 8 13as X
+                                                finsih at 8 13
+                                                mark 8 14as X
+                                              finsih at 8 14
+                                              mark 8 15as X
+                                            finsih at 8 15
+                                            start at 10 15
+                                            Return at 10 15 with false true
+                                            start at 9 16
+                                            Return at 9 16 with true false
+                                            start at 9 14
+                                            Return at 9 14 with true false
+                                            mark 9 15as X
+                                          finsih at 9 15
+                                          mark 9 16as X
+                                        finsih at 9 16
+                                        start at 8 17
+                                        Return at 8 17 with false true
+                                        start at 8 15
+                                        Return at 8 15 with true false
+                                        mark 8 16as X
+                                      finsih at 8 16
+                                      start at 7 17
+                                        start at 6 17
+                                          start at 5 17
+                                            start at 4 17
+                                              start at 3 17
+                                              Return at 3 17 with false true
+                                              start at 5 17
+                                              Return at 5 17 with true false
+                                              start at 4 18
+                                                start at 3 18
+                                                Return at 3 18 with false true
+                                                start at 5 18
+                                                  start at 4 18
+                                                  Return at 4 18 with true false
+                                                  start at 6 18
+                                                    start at 5 18
+                                                    Return at 5 18 with true false
+                                                    start at 7 18
+                                                      start at 6 18
+                                                      Return at 6 18 with true false
+                                                      start at 8 18
+                                                        start at 7 18
+                                                        Return at 7 18 with true false
+                                                        start at 9 18
+                                                        Return at 9 18 with false true
+                                                        start at 8 19
+                                                        Return at 8 19 with false true
+                                                        start at 8 17
+                                                        Return at 8 17 with false true
+                                                        mark 8 18as X
+                                                      finsih at 8 18
+                                                      start at 7 19
+                                                      Return at 7 19 with false true
+                                                      start at 7 17
+                                                      Return at 7 17 with true false
+                                                      mark 7 18as X
+                                                    finsih at 7 18
+                                                    start at 6 19
+                                                    Return at 6 19 with false true
+                                                    start at 6 17
+                                                    Return at 6 17 with true false
+                                                    mark 6 18as X
+                                                  finsih at 6 18
+                                                  start at 5 19
+meet boundary
+                                                    start at 4 19
+                                                    Return at 4 19 with false true
+                                                    start at 6 19
+                                                    Return at 6 19 with false true
+                                                    start at 5 20
+                                                    Return at 5 20
+                                                    start at 5 18
+                                                    Return at 5 18 with true false
+                                                    mark 5 19as X
+                                                  finsih at 5 19
+                                                  start at 5 17
+                                                  Return at 5 17 with true false
+                                                  mark 5 18as X
+                                                finsih at 5 18
+                                                start at 4 19
+                                                Return at 4 19 with false true
+                                                start at 4 17
+                                                Return at 4 17 with true false
+                                                mark 4 18as X
+                                              finsih at 4 18
+                                              start at 4 16
+                                              Return at 4 16 with true false
+                                              mark 4 17as X
+                                            finsih at 4 17
+                                            start at 6 17
+                                            Return at 6 17 with true false
+                                            start at 5 18
+                                            Return at 5 18 with true false
+                                            start at 5 16
+                                            Return at 5 16 with true false
+                                            mark 5 17as X
+                                          finsih at 5 17
+                                          start at 7 17
+                                          Return at 7 17 with true false
+                                          start at 6 18
+                                          Return at 6 18 with true false
+                                          start at 6 16
+                                          Return at 6 16 with true false
+                                          mark 6 17as X
+                                        finsih at 6 17
+                                        start at 8 17
+                                        Return at 8 17 with false true
+                                        start at 7 18
+                                        Return at 7 18 with true false
+                                        start at 7 16
+                                        Return at 7 16 with true false
+                                        mark 7 17as X
+                                      finsih at 7 17
+                                      start at 7 15
+                                      Return at 7 15 with false true
+                                      mark 7 16as X
+                                    finsih at 7 16
+                                    start at 6 17
+                                    Return at 6 17 with true false
+                                    start at 6 15
+                                      start at 5 15
+                                      Return at 5 15 with false true
+                                      start at 7 15
+                                      Return at 7 15 with false true
+                                      start at 6 16
+                                      Return at 6 16 with true false
+                                      start at 6 14
+                                      Return at 6 14 with false true
+                                      mark 6 15as X
+                                    finsih at 6 15
+                                    mark 6 16as X
+                                  finsih at 6 16
+                                  start at 5 17
+                                  Return at 5 17 with true false
+                                  start at 5 15
+                                  Return at 5 15 with false true
+                                  mark 5 16as X
+                                finsih at 5 16
+                                start at 4 17
+                                Return at 4 17 with true false
+                                start at 4 15
+                                Return at 4 15 with true false
+                                mark 4 16as X
+                              finsih at 4 16
+                              start at 4 14
+                              Return at 4 14 with true false
+                              mark 4 15as X
+                            finsih at 4 15
+                            start at 4 13
+                            Return at 4 13 with false true
+                            mark 4 14as X
+                          finsih at 4 14
+                          start at 3 15
+                          Return at 3 15 with false true
+                          start at 3 13
+                          Return at 3 13 with true false
+                          mark 3 14as X
+                        finsih at 3 14
+                        start at 3 12
+                        Return at 3 12 with false true
+                        mark 3 13as X
+                      finsih at 3 13
+                      start at 2 14
+                      Return at 2 14 with false true
+                      start at 2 12
+                      Return at 2 12 with true false
+                      mark 2 13as X
+                    finsih at 2 13
+                    start at 2 11
+                    Return at 2 11 with true false
+                    mark 2 12as X
+                  finsih at 2 12
+                  start at 2 10
+                  Return at 2 10 with true false
+                  mark 2 11as X
+                finsih at 2 11
+                start at 2 9
+                Return at 2 9 with true false
+                mark 2 10as X
+              finsih at 2 10
+              start at 1 11
+              Return at 1 11 with false true
+              start at 1 9
+              Return at 1 9 with false true
+              mark 1 10as X
+            finsih at 1 10
+            start at 0 11
+meet boundary
+              start at -1 11
+              Return at -1 11
+              start at 1 11
+              Return at 1 11 with false true
+              start at 0 12
+              Return at 0 12 with false true
+              start at 0 10
+              Return at 0 10 with true false
+              mark 0 11as X
+            finsih at 0 11
+            start at 0 9
+            Return at 0 9 with true false
+            mark 0 10as X
+          finsih at 0 10
+          start at 0 8
+          Return at 0 8 with true false
+          mark 0 9as X
+        finsih at 0 9
+        start at 0 7
+        Return at 0 7 with true false
+        mark 0 8as X
+      finsih at 0 8
+      start at 2 8
+      Return at 2 8 with false true
+      start at 1 9
+      Return at 1 9 with false true
+      start at 1 7
+      Return at 1 7 with true false
+      mark 1 8as X
+    finsih at 1 8
+    start at 1 6
+    Return at 1 6 with false true
+    mark 1 7as X
+  finsih at 1 7
+  start at 0 8
+  Return at 0 8 with true false
+  start at 0 6
+  Return at 0 6 with false true
+  mark 0 7as X
+finsih at 0 7
+start dfs 0 13
+start at 0 13
+meet boundary
+  start at -1 13
+  Return at -1 13
+  start at 1 13
+  Return at 1 13 with false true
+  start at 0 14
+meet boundary
+    start at -1 14
+    Return at -1 14
+    start at 1 14
+      start at 0 14
+      Return at 0 14 with true false
+      start at 2 14
+      Return at 2 14 with false true
+      start at 1 15
+      Return at 1 15 with false true
+      start at 1 13
+      Return at 1 13 with false true
+      mark 1 14as X
+    finsih at 1 14
+    start at 0 15
+meet boundary
+      start at -1 15
+      Return at -1 15
+      start at 1 15
+      Return at 1 15 with false true
+      start at 0 16
+meet boundary
+        start at -1 16
+        Return at -1 16
+        start at 1 16
+        Return at 1 16 with false true
+        start at 0 17
+        Return at 0 17 with false true
+        start at 0 15
+        Return at 0 15 with true false
+        mark 0 16as X
+      finsih at 0 16
+      start at 0 14
+      Return at 0 14 with true false
+      mark 0 15as X
+    finsih at 0 15
+    start at 0 13
+    Return at 0 13 with true false
+    mark 0 14as X
+  finsih at 0 14
+  start at 0 12
+  Return at 0 12 with false true
+  mark 0 13as X
+finsih at 0 13
+start dfs 0 18
+start at 0 18
+meet boundary
+  start at -1 18
+  Return at -1 18
+  start at 1 18
+    start at 0 18
+    Return at 0 18 with true false
+    start at 2 18
+      start at 1 18
+      Return at 1 18 with true false
+      start at 3 18
+      Return at 3 18 with false true
+      start at 2 19
+      Return at 2 19 with false true
+      start at 2 17
+      Return at 2 17 with false true
+      mark 2 18as X
+    finsih at 2 18
+    start at 1 19
+meet boundary
+      start at 0 19
+      Return at 0 19 with false true
+      start at 2 19
+      Return at 2 19 with false true
+      start at 1 20
+      Return at 1 20
+      start at 1 18
+      Return at 1 18 with true false
+      mark 1 19as X
+    finsih at 1 19
+    start at 1 17
+      start at 0 17
+      Return at 0 17 with false true
+      start at 2 17
+      Return at 2 17 with false true
+      start at 1 18
+      Return at 1 18 with true false
+      start at 1 16
+      Return at 1 16 with false true
+      mark 1 17as X
+    finsih at 1 17
+    mark 1 18as X
+  finsih at 1 18
+  start at 0 19
+  Return at 0 19 with false true
+  start at 0 17
+  Return at 0 17 with false true
+  mark 0 18as X
+finsih at 0 18
+start dfs 1 1
+start at 1 1
+  start at 0 1
+  Return at 0 1 with false true
+  start at 2 1
+  Return at 2 1 with false true
+  start at 1 2
+  Return at 1 2 with false true
+  start at 1 0
+  Return at 1 0 with false true
+  mark 1 1as X
+finsih at 1 1
+start dfs 2 0
+start at 2 0
+meet boundary
+  start at 1 0
+  Return at 1 0 with false true
+  start at 3 0
+  Return at 3 0 with false true
+  start at 2 1
+  Return at 2 1 with false true
+  start at 2 -1
+  Return at 2 -1
+  mark 2 0as X
+finsih at 2 0
+start dfs 3 19
+start at 3 19
+meet boundary
+  start at 2 19
+  Return at 2 19 with false true
+  start at 4 19
+  Return at 4 19 with false true
+  start at 3 20
+  Return at 3 20
+  start at 3 18
+  Return at 3 18 with false true
+  mark 3 19as X
+finsih at 3 19
+start dfs 4 0
+start at 4 0
+meet boundary
+  start at 3 0
+  Return at 3 0 with false true
+  start at 5 0
+  Return at 5 0 with false true
+  start at 4 1
+  Return at 4 1 with false true
+  start at 4 -1
+  Return at 4 -1
+  mark 4 0as X
+finsih at 4 0
+start dfs 4 5
+start at 4 5
+  start at 3 5
+  Return at 3 5 with false true
+  start at 5 5
+  Return at 5 5 with false true
+  start at 4 6
+  Return at 4 6 with false true
+  start at 4 4
+  Return at 4 4 with false true
+  mark 4 5as X
+finsih at 4 5
+start dfs 4 11
+start at 4 11
+  start at 3 11
+  Return at 3 11 with false true
+  start at 5 11
+    start at 4 11
+    Return at 4 11 with true false
+    start at 6 11
+    Return at 6 11 with false true
+    start at 5 12
+    Return at 5 12 with false true
+    start at 5 10
+    Return at 5 10 with false true
+    mark 5 11as X
+  finsih at 5 11
+  start at 4 12
+    start at 3 12
+    Return at 3 12 with false true
+    start at 5 12
+    Return at 5 12 with false true
+    start at 4 13
+    Return at 4 13 with false true
+    start at 4 11
+    Return at 4 11 with true false
+    mark 4 12as X
+  finsih at 4 12
+  start at 4 10
+  Return at 4 10 with false true
+  mark 4 11as X
+finsih at 4 11
+start dfs 5 4
+start at 5 4
+  start at 4 4
+  Return at 4 4 with false true
+  start at 6 4
+  Return at 6 4 with false true
+  start at 5 5
+  Return at 5 5 with false true
+  start at 5 3
+  Return at 5 3 with false true
+  mark 5 4as X
+finsih at 5 4
+start dfs 7 5
+start at 7 5
+  start at 6 5
+  Return at 6 5 with false true
+  start at 8 5
+    start at 7 5
+    Return at 7 5 with true false
+    start at 9 5
+    Return at 9 5 with false true
+    start at 8 6
+      start at 7 6
+      Return at 7 6 with false true
+      start at 9 6
+      Return at 9 6 with false true
+      start at 8 7
+      Return at 8 7 with false true
+      start at 8 5
+      Return at 8 5 with true false
+      mark 8 6as X
+    finsih at 8 6
+    start at 8 4
+      start at 7 4
+      Return at 7 4 with false true
+      start at 9 4
+        start at 8 4
+        Return at 8 4 with true false
+        start at 10 4
+        Return at 10 4 with false true
+        start at 9 5
+        Return at 9 5 with false true
+        start at 9 3
+        Return at 9 3 with false true
+        mark 9 4as X
+      finsih at 9 4
+      start at 8 5
+      Return at 8 5 with true false
+      start at 8 3
+      Return at 8 3 with false true
+      mark 8 4as X
+    finsih at 8 4
+    mark 8 5as X
+  finsih at 8 5
+  start at 7 6
+  Return at 7 6 with false true
+  start at 7 4
+  Return at 7 4 with false true
+  mark 7 5as X
+finsih at 7 5
+start dfs 10 3
+start at 10 3
+  start at 9 3
+  Return at 9 3 with false true
+  start at 11 3
+    start at 10 3
+    Return at 10 3 with true false
+    start at 12 3
+      start at 11 3
+      Return at 11 3 with true false
+      start at 13 3
+        start at 12 3
+        Return at 12 3 with true false
+        start at 14 3
+          start at 13 3
+          Return at 13 3 with true false
+          start at 15 3
+          Return at 15 3 with false true
+          start at 14 4
+            start at 13 4
+            Return at 13 4 with false true
+            start at 15 4
+            Return at 15 4 with false true
+            start at 14 5
+              start at 13 5
+                start at 12 5
+                Return at 12 5 with false true
+                start at 14 5
+                Return at 14 5 with true false
+                start at 13 6
+                Return at 13 6 with false true
+                start at 13 4
+                Return at 13 4 with false true
+                mark 13 5as X
+              finsih at 13 5
+              start at 15 5
+              Return at 15 5 with false true
+              start at 14 6
+                start at 13 6
+                Return at 13 6 with false true
+                start at 15 6
+                Return at 15 6 with false true
+                start at 14 7
+                Return at 14 7 with false true
+                start at 14 5
+                Return at 14 5 with true false
+                mark 14 6as X
+              finsih at 14 6
+              start at 14 4
+              Return at 14 4 with true false
+              mark 14 5as X
+            finsih at 14 5
+            start at 14 3
+            Return at 14 3 with true false
+            mark 14 4as X
+          finsih at 14 4
+          start at 14 2
+          Return at 14 2 with false true
+          mark 14 3as X
+        finsih at 14 3
+        start at 13 4
+        Return at 13 4 with false true
+        start at 13 2
+          start at 12 2
+            start at 11 2
+              start at 10 2
+              Return at 10 2 with false true
+              start at 12 2
+              Return at 12 2 with true false
+              start at 11 3
+              Return at 11 3 with true false
+              start at 11 1
+              Return at 11 1 with false true
+              mark 11 2as X
+            finsih at 11 2
+            start at 13 2
+            Return at 13 2 with true false
+            start at 12 3
+            Return at 12 3 with true false
+            start at 12 1
+              start at 11 1
+              Return at 11 1 with false true
+              start at 13 1
+                start at 12 1
+                Return at 12 1 with true false
+                start at 14 1
+                Return at 14 1 with false true
+                start at 13 2
+                Return at 13 2 with true false
+                start at 13 0
+meet boundary
+                  start at 12 0
+                  Return at 12 0 with false true
+                  start at 14 0
+meet boundary
+                    start at 13 0
+                    Return at 13 0 with true false
+                    start at 15 0
+                    Return at 15 0 with false true
+                    start at 14 1
+                    Return at 14 1 with false true
+                    start at 14 -1
+                    Return at 14 -1
+                    mark 14 0as X
+                  finsih at 14 0
+                  start at 13 1
+                  Return at 13 1 with true false
+                  start at 13 -1
+                  Return at 13 -1
+                  mark 13 0as X
+                finsih at 13 0
+                mark 13 1as X
+              finsih at 13 1
+              start at 12 2
+              Return at 12 2 with true false
+              start at 12 0
+              Return at 12 0 with false true
+              mark 12 1as X
+            finsih at 12 1
+            mark 12 2as X
+          finsih at 12 2
+          start at 14 2
+          Return at 14 2 with false true
+          start at 13 3
+          Return at 13 3 with true false
+          start at 13 1
+          Return at 13 1 with true false
+          mark 13 2as X
+        finsih at 13 2
+        mark 13 3as X
+      finsih at 13 3
+      start at 12 4
+      Return at 12 4 with false true
+      start at 12 2
+      Return at 12 2 with true false
+      mark 12 3as X
+    finsih at 12 3
+    start at 11 4
+    Return at 11 4 with false true
+    start at 11 2
+    Return at 11 2 with true true
+    mark 11 3as X
+  finsih at 11 3
+  start at 10 4
+  Return at 10 4 with false true
+  start at 10 2
+  Return at 10 2 with false true
+  mark 10 3as X
+finsih at 10 3
+start dfs 10 5
+start at 10 5
+  start at 9 5
+  Return at 9 5 with false true
+  start at 11 5
+    start at 10 5
+    Return at 10 5 with true false
+    start at 12 5
+    Return at 12 5 with false true
+    start at 11 6
+      start at 10 6
+        start at 9 6
+        Return at 9 6 with false true
+        start at 11 6
+        Return at 11 6 with true false
+        start at 10 7
+        Return at 10 7 with false true
+        start at 10 5
+        Return at 10 5 with true false
+        mark 10 6as X
+      finsih at 10 6
+      start at 12 6
+      Return at 12 6 with false true
+      start at 11 7
+        start at 10 7
+        Return at 10 7 with false true
+        start at 12 7
+          start at 11 7
+          Return at 11 7 with true false
+          start at 13 7
+          Return at 13 7 with false true
+          start at 12 8
+          Return at 12 8 with false true
+          start at 12 6
+          Return at 12 6 with false true
+          mark 12 7as X
+        finsih at 12 7
+        start at 11 8
+          start at 10 8
+          Return at 10 8 with false true
+          start at 12 8
+          Return at 12 8 with false true
+          start at 11 9
+            start at 10 9
+            Return at 10 9 with false true
+            start at 12 9
+              start at 11 9
+              Return at 11 9 with true false
+              start at 13 9
+              Return at 13 9 with false true
+              start at 12 10
+                start at 11 10
+                  start at 10 10
+                    start at 9 10
+                    Return at 9 10 with false true
+                    start at 11 10
+                    Return at 11 10 with true false
+                    start at 10 11
+                    Return at 10 11 with false true
+                    start at 10 9
+                    Return at 10 9 with false true
+                    mark 10 10as X
+                  finsih at 10 10
+                  start at 12 10
+                  Return at 12 10 with true false
+                  start at 11 11
+                  Return at 11 11 with false true
+                  start at 11 9
+                  Return at 11 9 with true false
+                  mark 11 10as X
+                finsih at 11 10
+                start at 13 10
+                  start at 12 10
+                  Return at 12 10 with true false
+                  start at 14 10
+                  Return at 14 10 with false true
+                  start at 13 11
+                  Return at 13 11 with false true
+                  start at 13 9
+                  Return at 13 9 with false true
+                  mark 13 10as X
+                finsih at 13 10
+                start at 12 11
+                  start at 11 11
+                  Return at 11 11 with false true
+                  start at 13 11
+                  Return at 13 11 with false true
+                  start at 12 12
+                  Return at 12 12 with false true
+                  start at 12 10
+                  Return at 12 10 with true false
+                  mark 12 11as X
+                finsih at 12 11
+                start at 12 9
+                Return at 12 9 with true false
+                mark 12 10as X
+              finsih at 12 10
+              start at 12 8
+              Return at 12 8 with false true
+              mark 12 9as X
+            finsih at 12 9
+            start at 11 10
+            Return at 11 10 with true true
+            start at 11 8
+            Return at 11 8 with true false
+            mark 11 9as X
+          finsih at 11 9
+          start at 11 7
+          Return at 11 7 with true false
+          mark 11 8as X
+        finsih at 11 8
+        start at 11 6
+        Return at 11 6 with true false
+        mark 11 7as X
+      finsih at 11 7
+      start at 11 5
+      Return at 11 5 with true false
+      mark 11 6as X
+    finsih at 11 6
+    start at 11 4
+    Return at 11 4 with false true
+    mark 11 5as X
+  finsih at 11 5
+  start at 10 6
+  Return at 10 6 with true true
+  start at 10 4
+  Return at 10 4 with false true
+  mark 10 5as X
+finsih at 10 5
+start dfs 11 0
+start at 11 0
+meet boundary
+  start at 10 0
+  Return at 10 0 with false true
+  start at 12 0
+  Return at 12 0 with false true
+  start at 11 1
+  Return at 11 1 with false true
+  start at 11 -1
+  Return at 11 -1
+  mark 11 0as X
+finsih at 11 0
+start dfs 12 13
+start at 12 13
+  start at 11 13
+  Return at 11 13 with false true
+  start at 13 13
+  Return at 13 13 with false true
+  start at 12 14
+  Return at 12 14 with false true
+  start at 12 12
+  Return at 12 12 with false true
+  mark 12 13as X
+finsih at 12 13
+start dfs 13 8
+start at 13 8
+  start at 12 8
+  Return at 12 8 with false true
+  start at 14 8
+    start at 13 8
+    Return at 13 8 with true false
+    start at 15 8
+      start at 14 8
+      Return at 14 8 with true false
+      start at 16 8
+        start at 15 8
+        Return at 15 8 with true false
+        start at 17 8
+          start at 16 8
+          Return at 16 8 with true false
+          start at 18 8
+            start at 17 8
+            Return at 17 8 with true false
+            start at 19 8
+            Return at 19 8 with false true
+            start at 18 9
+            Return at 18 9 with false true
+            start at 18 7
+              start at 17 7
+              Return at 17 7 with false true
+              start at 19 7
+              Return at 19 7 with false true
+              start at 18 8
+              Return at 18 8 with true false
+              start at 18 6
+                start at 17 6
+                  start at 16 6
+                  Return at 16 6 with false true
+                  start at 18 6
+                  Return at 18 6 with true false
+                  start at 17 7
+                  Return at 17 7 with false true
+                  start at 17 5
+                    start at 16 5
+                      start at 15 5
+                      Return at 15 5 with false true
+                      start at 17 5
+                      Return at 17 5 with true false
+                      start at 16 6
+                      Return at 16 6 with false true
+                      start at 16 4
+                      Return at 16 4 with false true
+                      mark 16 5as X
+                    finsih at 16 5
+                    start at 18 5
+                      start at 17 5
+                      Return at 17 5 with true false
+                      start at 19 5
+meet boundary
+                        start at 18 5
+                        Return at 18 5 with true false
+                        start at 20 5
+                        Return at 20 5
+                        start at 19 6
+                        Return at 19 6 with false true
+                        start at 19 4
+                        Return at 19 4 with false true
+                        mark 19 5as X
+                      finsih at 19 5
+                      start at 18 6
+                      Return at 18 6 with true false
+                      start at 18 4
+                        start at 17 4
+                          start at 16 4
+                          Return at 16 4 with false true
+                          start at 18 4
+                          Return at 18 4 with true false
+                          start at 17 5
+                          Return at 17 5 with true false
+                          start at 17 3
+                            start at 16 3
+                              start at 15 3
+                              Return at 15 3 with false true
+                              start at 17 3
+                              Return at 17 3 with true false
+                              start at 16 4
+                              Return at 16 4 with false true
+                              start at 16 2
+                                start at 15 2
+                                Return at 15 2 with false true
+                                start at 17 2
+                                Return at 17 2 with false true
+                                start at 16 3
+                                Return at 16 3 with true false
+                                start at 16 1
+                                  start at 15 1
+                                    start at 14 1
+                                    Return at 14 1 with false true
+                                    start at 16 1
+                                    Return at 16 1 with true false
+                                    start at 15 2
+                                    Return at 15 2 with false true
+                                    start at 15 0
+                                    Return at 15 0 with false true
+                                    mark 15 1as X
+                                  finsih at 15 1
+                                  start at 17 1
+                                    start at 16 1
+                                    Return at 16 1 with true false
+                                    start at 18 1
+                                      start at 17 1
+                                      Return at 17 1 with true false
+                                      start at 19 1
+meet boundary
+                                        start at 18 1
+                                        Return at 18 1 with true false
+                                        start at 20 1
+                                        Return at 20 1
+                                        start at 19 2
+meet boundary
+                                          start at 18 2
+                                          Return at 18 2 with false true
+                                          start at 20 2
+                                          Return at 20 2
+                                          start at 19 3
+meet boundary
+                                            start at 18 3
+                                              start at 17 3
+                                              Return at 17 3 with true false
+                                              start at 19 3
+                                              Return at 19 3 with true false
+                                              start at 18 4
+                                              Return at 18 4 with true false
+                                              start at 18 2
+                                              Return at 18 2 with false true
+                                              mark 18 3as X
+                                            finsih at 18 3
+                                            start at 20 3
+                                            Return at 20 3
+                                            start at 19 4
+                                            Return at 19 4 with false true
+                                            start at 19 2
+                                            Return at 19 2 with true false
+                                            mark 19 3as X
+                                          finsih at 19 3
+                                          start at 19 1
+                                          Return at 19 1 with true false
+                                          mark 19 2as X
+                                        finsih at 19 2
+                                        start at 19 0
+                                        Return at 19 0 with false true
+                                        mark 19 1as X
+                                      finsih at 19 1
+                                      start at 18 2
+                                      Return at 18 2 with false true
+                                      start at 18 0
+meet boundary
+                                        start at 17 0
+meet boundary
+                                          start at 16 0
+                                          Return at 16 0 with false true
+                                          start at 18 0
+                                          Return at 18 0 with true false
+                                          start at 17 1
+                                          Return at 17 1 with true false
+                                          start at 17 -1
+                                          Return at 17 -1
+                                          mark 17 0as X
+                                        finsih at 17 0
+                                        start at 19 0
+                                        Return at 19 0 with false true
+                                        start at 18 1
+                                        Return at 18 1 with true false
+                                        start at 18 -1
+                                        Return at 18 -1
+                                        mark 18 0as X
+                                      finsih at 18 0
+                                      mark 18 1as X
+                                    finsih at 18 1
+                                    start at 17 2
+                                    Return at 17 2 with false true
+                                    start at 17 0
+                                    Return at 17 0 with true false
+                                    mark 17 1as X
+                                  finsih at 17 1
+                                  start at 16 2
+                                  Return at 16 2 with true false
+                                  start at 16 0
+                                  Return at 16 0 with false true
+                                  mark 16 1as X
+                                finsih at 16 1
+                                mark 16 2as X
+                              finsih at 16 2
+                              mark 16 3as X
+                            finsih at 16 3
+                            start at 18 3
+                            Return at 18 3 with true false
+                            start at 17 4
+                            Return at 17 4 with true false
+                            start at 17 2
+                            Return at 17 2 with false true
+                            mark 17 3as X
+                          finsih at 17 3
+                          mark 17 4as X
+                        finsih at 17 4
+                        start at 19 4
+                        Return at 19 4 with false true
+                        start at 18 5
+                        Return at 18 5 with true false
+                        start at 18 3
+                        Return at 18 3 with true false
+                        mark 18 4as X
+                      finsih at 18 4
+                      mark 18 5as X
+                    finsih at 18 5
+                    start at 17 6
+                    Return at 17 6 with true false
+                    start at 17 4
+                    Return at 17 4 with true false
+                    mark 17 5as X
+                  finsih at 17 5
+                  mark 17 6as X
+                finsih at 17 6
+                start at 19 6
+                Return at 19 6 with false true
+                start at 18 7
+                Return at 18 7 with true false
+                start at 18 5
+                Return at 18 5 with true false
+                mark 18 6as X
+              finsih at 18 6
+              mark 18 7as X
+            finsih at 18 7
+            mark 18 8as X
+          finsih at 18 8
+          start at 17 9
+            start at 16 9
+            Return at 16 9 with false true
+            start at 18 9
+            Return at 18 9 with false true
+            start at 17 10
+            Return at 17 10 with false true
+            start at 17 8
+            Return at 17 8 with true false
+            mark 17 9as X
+          finsih at 17 9
+          start at 17 7
+          Return at 17 7 with false true
+          mark 17 8as X
+        finsih at 17 8
+        start at 16 9
+        Return at 16 9 with false true
+        start at 16 7
+          start at 15 7
+          Return at 15 7 with false true
+          start at 17 7
+          Return at 17 7 with false true
+          start at 16 8
+          Return at 16 8 with true false
+          start at 16 6
+          Return at 16 6 with false true
+          mark 16 7as X
+        finsih at 16 7
+        mark 16 8as X
+      finsih at 16 8
+      start at 15 9
+      Return at 15 9 with false true
+      start at 15 7
+      Return at 15 7 with false true
+      mark 15 8as X
+    finsih at 15 8
+    start at 14 9
+      start at 13 9
+      Return at 13 9 with false true
+      start at 15 9
+      Return at 15 9 with false true
+      start at 14 10
+      Return at 14 10 with false true
+      start at 14 8
+      Return at 14 8 with true false
+      mark 14 9as X
+    finsih at 14 9
+    start at 14 7
+    Return at 14 7 with false true
+    mark 14 8as X
+  finsih at 14 8
+  start at 13 9
+  Return at 13 9 with false true
+  start at 13 7
+  Return at 13 7 with false true
+  mark 13 8as X
+finsih at 13 8
+start dfs 13 12
+start at 13 12
+  start at 12 12
+  Return at 12 12 with false true
+  start at 14 12
+  Return at 14 12 with false true
+  start at 13 13
+  Return at 13 13 with false true
+  start at 13 11
+  Return at 13 11 with false true
+  mark 13 12as X
+finsih at 13 12
+start dfs 14 13
+start at 14 13
+  start at 13 13
+  Return at 13 13 with false true
+  start at 15 13
+    start at 14 13
+    Return at 14 13 with true false
+    start at 16 13
+      start at 15 13
+      Return at 15 13 with true false
+      start at 17 13
+      Return at 17 13 with false true
+      start at 16 14
+      Return at 16 14 with false true
+      start at 16 12
+        start at 15 12
+        Return at 15 12 with false true
+        start at 17 12
+          start at 16 12
+          Return at 16 12 with true false
+          start at 18 12
+          Return at 18 12 with false true
+          start at 17 13
+          Return at 17 13 with false true
+          start at 17 11
+          Return at 17 11 with false true
+          mark 17 12as X
+        finsih at 17 12
+        start at 16 13
+        Return at 16 13 with true false
+        start at 16 11
+        Return at 16 11 with false true
+        mark 16 12as X
+      finsih at 16 12
+      mark 16 13as X
+    finsih at 16 13
+    start at 15 14
+      start at 14 14
+        start at 13 14
+        Return at 13 14 with false true
+        start at 15 14
+        Return at 15 14 with true false
+        start at 14 15
+        Return at 14 15 with false true
+        start at 14 13
+        Return at 14 13 with true false
+        mark 14 14as X
+      finsih at 14 14
+      start at 16 14
+      Return at 16 14 with false true
+      start at 15 15
+      Return at 15 15 with false true
+      start at 15 13
+      Return at 15 13 with true false
+      mark 15 14as X
+    finsih at 15 14
+    start at 15 12
+    Return at 15 12 with false true
+    mark 15 13as X
+  finsih at 15 13
+  start at 14 14
+  Return at 14 14 with true true
+  start at 14 12
+  Return at 14 12 with false true
+  mark 14 13as X
+finsih at 14 13
+start dfs 15 11
+start at 15 11
+  start at 14 11
+  Return at 14 11 with false true
+  start at 16 11
+  Return at 16 11 with false true
+  start at 15 12
+  Return at 15 12 with false true
+  start at 15 10
+  Return at 15 10 with false true
+  mark 15 11as X
+finsih at 15 11
+start dfs 16 10
+start at 16 10
+  start at 15 10
+  Return at 15 10 with false true
+  start at 17 10
+  Return at 17 10 with false true
+  start at 16 11
+  Return at 16 11 with false true
+  start at 16 9
+  Return at 16 9 with false true
+  mark 16 10as X
+finsih at 16 10
+start dfs 18 11
+start at 18 11
+  start at 17 11
+  Return at 17 11 with false true
+  start at 19 11
+  Return at 19 11 with false true
+  start at 18 12
+  Return at 18 12 with false true
+  start at 18 10
+  Return at 18 10 with false true
+  mark 18 11as X
+finsih at 18 11
+start dfs 18 13
+start at 18 13
+  start at 17 13
+  Return at 17 13 with false true
+  start at 19 13
+  Return at 19 13 with false true
+  start at 18 14
+  Return at 18 14 with false true
+  start at 18 12
+  Return at 18 12 with false true
+  mark 18 13as X
+finsih at 18 13
+start dfs 19 9
+start at 19 9
+meet boundary
+  start at 18 9
+  Return at 18 9 with false true
+  start at 20 9
+  Return at 20 9
+  start at 19 10
+meet boundary
+    start at 18 10
+    Return at 18 10 with false true
+    start at 20 10
+    Return at 20 10
+    start at 19 11
+    Return at 19 11 with false true
+    start at 19 9
+    Return at 19 9 with true false
+    mark 19 10as X
+  finsih at 19 10
+  start at 19 8
+  Return at 19 8 with false true
+  mark 19 9as X
+finsih at 19 9
+start dfs 19 12
+start at 19 12
+meet boundary
+  start at 18 12
+  Return at 18 12 with false true
+  start at 20 12
+  Return at 20 12
+  start at 19 13
+  Return at 19 13 with false true
+  start at 19 11
+  Return at 19 11 with false true
+  mark 19 12as X
+finsih at 19 12
+start dfs 19 14
+start at 19 14
+meet boundary
+  start at 18 14
+  Return at 18 14 with false true
+  start at 20 14
+  Return at 20 14
+  start at 19 15
+  Return at 19 15 with false true
+  start at 19 13
+  Return at 19 13 with false true
+  mark 19 14as X
+finsih at 19 14

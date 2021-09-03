@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.rmd": "markdown",
+        "*.Rmd": "rmarkdown",
+        "iostream": "cpp",
+        "cmath": "cpp",
+        "queue": "cpp"
+    },
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
+}
