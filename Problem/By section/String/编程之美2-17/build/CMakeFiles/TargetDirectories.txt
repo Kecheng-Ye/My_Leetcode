@@ -1,3 +1,0 @@
-/Users/kecheng_ye/Documents/Leetcode/Problem/By section/String/编程之美2-17/build/CMakeFiles/rebuild_cache.dir
-/Users/kecheng_ye/Documents/Leetcode/Problem/By section/String/编程之美2-17/build/CMakeFiles/edit_cache.dir
-/Users/kecheng_ye/Documents/Leetcode/Problem/By section/String/编程之美2-17/build/CMakeFiles/Leetcode.dir

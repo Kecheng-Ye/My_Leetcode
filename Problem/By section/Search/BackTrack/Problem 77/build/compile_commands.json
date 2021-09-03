@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/Users/kecheng_ye/Documents/Leetcode/Problem/By section/Search/BackTrack/Problem 77/build",
-  "command": "/usr/bin/clang++   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -std=gnu++11 -o CMakeFiles/Leetcode.dir/problem_77.cpp.o -c \"/Users/kecheng_ye/Documents/Leetcode/Problem/By section/Search/BackTrack/Problem 77/problem_77.cpp\"",
-  "file": "/Users/kecheng_ye/Documents/Leetcode/Problem/By section/Search/BackTrack/Problem 77/problem_77.cpp"
-}
-]

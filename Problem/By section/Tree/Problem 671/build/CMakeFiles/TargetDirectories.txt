@@ -1,3 +1,0 @@
-/Users/kecheng_ye/Documents/Leetcode/Problem/By section/Tree/Problem 671/build/CMakeFiles/rebuild_cache.dir
-/Users/kecheng_ye/Documents/Leetcode/Problem/By section/Tree/Problem 671/build/CMakeFiles/edit_cache.dir
-/Users/kecheng_ye/Documents/Leetcode/Problem/By section/Tree/Problem 671/build/CMakeFiles/Leetcode.dir

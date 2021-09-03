@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/Users/kecheng_ye/Documents/Leetcode/Problem/By section/Two pointer/Problem 633/build",
-  "command": "/usr/bin/clang++   -O3 -DNDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -std=gnu++11 -o CMakeFiles/Leetcode.dir/problem_633.cpp.o -c \"/Users/kecheng_ye/Documents/Leetcode/Problem/By section/Two pointer/Problem 633/problem_633.cpp\"",
-  "file": "/Users/kecheng_ye/Documents/Leetcode/Problem/By section/Two pointer/Problem 633/problem_633.cpp"
-}
-]

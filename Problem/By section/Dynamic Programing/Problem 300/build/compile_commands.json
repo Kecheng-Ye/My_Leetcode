@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/Users/kecheng_ye/Documents/Leetcode/Problem/By section/Dynamic Programing/Problem 300/build",
-  "command": "/usr/bin/clang++   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -std=gnu++11 -o CMakeFiles/Leetcode.dir/problem_300.cpp.o -c \"/Users/kecheng_ye/Documents/Leetcode/Problem/By section/Dynamic Programing/Problem 300/problem_300.cpp\"",
-  "file": "/Users/kecheng_ye/Documents/Leetcode/Problem/By section/Dynamic Programing/Problem 300/problem_300.cpp"
-}
-]

@@ -1,3 +1,0 @@
-/Users/kecheng_ye/Documents/Leetcode/Problem/By section/Sorting/Problem 451/build/CMakeFiles/rebuild_cache.dir
-/Users/kecheng_ye/Documents/Leetcode/Problem/By section/Sorting/Problem 451/build/CMakeFiles/edit_cache.dir
-/Users/kecheng_ye/Documents/Leetcode/Problem/By section/Sorting/Problem 451/build/CMakeFiles/Leetcode.dir
