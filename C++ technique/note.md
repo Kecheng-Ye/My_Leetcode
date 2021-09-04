@@ -560,6 +560,8 @@ void swap(vector<int>&nums, int i, int j) {
                 while (!stk.empty()) {
                     int node = stk.top();
                     stk.pop();
+                    
+                    /*Do something*/
 
                     for (int neigh : graph[node]) {
                         if (!visited[start]) {
@@ -570,6 +572,54 @@ void swap(vector<int>&nums, int i, int j) {
                 }
             }
         }
+    }
+    ```
+
+    * Topological sort
+    ```cpp
+    vector<bool> visited;
+    vector<bool> on_path;
+    bool find_cycle;
+    vector<int> post_order;
+    
+    vector<int> findOrder(vector<vector<int>>& graph) {
+        int n = graph.size();
+        visited = vector<bool>(n, false);
+        on_path = vector<bool>(n, false);
+        post_order = vector<int>();
+        find_cycle = false;
+        
+        for(int i = 0; i < numCourses; i++) {
+            traverse(graph, i);
+            if(find_cycle) return {}; // if find cycle, then it cannot be sorted
+        }
+        
+        
+        reverse(post_order.begin(), post_order.end()); // if we want parent to be the first, then we have to reverse this list
+        return post_order;
+    }
+    
+    void traverse(vector<vector<int>>& prerequisites, int start) {
+        if(on_path[start]) { // find a loop
+            find_cycle = true;
+            return;
+        }
+        
+        if(visited[start]) { // reached to a previous traversed point
+            return;          // this is not necessarily a loop because we are in a directed graph
+        }                   
+        
+        visited[start] = true; // one traversed never traversed again
+        on_path[start] = true; // we are on a search path starting at start
+        
+        for(int neighbour : prerequisites[start]) {
+            traverse(prerequisites, neighbour);
+            if(find_cycle) return;
+        }
+        
+        on_path[start] = false; // once we finish this traverse, we backtrack back
+        post_order.push_back(start); // after we traverse all the child, we will add parent
+        
     }
     ```
 
