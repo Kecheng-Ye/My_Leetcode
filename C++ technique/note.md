@@ -488,6 +488,91 @@ void swap(vector<int>&nums, int i, int j) {
     };
     ```
 
+* Given two integers $n$ and $k$, construct a list answer that contains $n$ different positive integers ranging from $1$ to $n$ and obeys the following requirement:
+    * Suppose this list is $answer = [a1, a2, a3, ... , an]$, then the list $[|a1 - a2|, |a2 - a3|, |a3 - a4|, ... , |an-1 - an|]$ has exactly $k$ distinct integers.
+    * Return the list answer. If there multiple valid answers, return any of them.
+    
+    ```cpp
+    // [1, n, 2, n - 2, 3, ...] will result in a n - 1 distinct diff
+    // Time: O(n), Space: O(1)
+    vector<int> constructArray(int n, int k) {
+        vector<int> result(n, 0);
+        int c = 0;
+        
+        for (int v = 1; v < n-k; v++) { // first produce acc order of number 
+            result[c++] = v;
+        }
+        
+        for (int i = 0; i <= k; i++) { // after n - k number, we have to produce alternating serise to reach [1, n, 2, n - 2]
+            result[c++] = (i%2 == 0) ? (n-k + i/2) : (n - i/2);
+        }
+        
+        return result;
+    }
+    ```
+
+* Graph
+    * BFS
+    ```cpp
+    void BFS(vector<vector<int>>& graph) {
+        queue<int> q;
+        vector<bool> visited(graph.size(), false);
+        
+        for(int i = 0; i < graph.size(); i++) {
+            if(visited[i]) continue;
+            
+            q.push(i);
+            
+            while(!q.empty()) {
+                int size = q.size();
+                
+                for(int j = 0; j < size; j++) {
+                    int temp = q.front();
+                    q.pop();
+                    
+                    /*Do something*/
+                    
+                    visited[temp] = true;
+                    
+                    // add its neighbour nodes
+                    for(int node : graph[temp]) {
+                        if(visited[node]) continue;
+                        
+                        q.push(node);
+                    }
+                }
+            }
+        }
+    }
+    ```
+
+    * DFS
+    ```cpp
+    void DFS(vector<vector<int>>& graph) {
+        vector<bool> visited(graph.size(), false);
+        
+        for (int start = 0; start < n; ++start) {
+            if (!visited[start]) {
+                stack<int> stk;
+                stk.push(start);
+                visited[start] = true;
+
+                while (!stk.empty()) {
+                    int node = stk.top();
+                    stk.pop();
+
+                    for (int neigh : graph[node]) {
+                        if (!visited[start]) {
+                            stk.push(neigh);
+                            visited[start] = true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    ```
+
 ### C++ Fun facts
 
 * auto cast
