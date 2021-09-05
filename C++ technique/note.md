@@ -623,6 +623,59 @@ void swap(vector<int>&nums, int i, int j) {
     }
     ```
 
+* Disjoint Set
+    ```cpp
+    class Union_set{
+    public:
+        Union_set(int size) {
+            parents = vector<int>(size, 0);
+            rank = vector<int>(size, 0);
+            
+            for(int i = 0; i < size; i++) {
+                parents[i] = i;
+            }
+        }
+        
+        bool Union(int u, int v) {
+            int pu = Find(u);
+            int pv = Find(v);
+            if(pu == pv) return false;
+            
+            if(rank[pu] == rank[pv]) { // if they have the same rank, then arbitrary choose one as the parent
+                rank[pu]++;
+                parents[pv] = pu;
+            }else if(rank[pu] > rank[pv]) {
+                parents[pv] = pu;
+            }else {
+                parents[pu] = pv;
+            }
+            
+            return true;
+        }
+        
+        // find parent and compress the path
+        int Find(int u) {
+            if(u != parents[u]) {
+                parents[u] = Find(parents[u]);
+            }
+            
+            return parents[u];
+        }
+        
+    private:
+        vector<int> parents;
+        vector<int> rank;
+    };
+    ```
+
+* change two number without extra variable
+    ```cpp
+    void (int& a, int& b) {
+        a = a ^ b;
+        b = a ^ b;
+        a = a ^ b;
+    }
+    ```
 ### C++ Fun facts
 
 * auto cast
@@ -641,6 +694,12 @@ v2 = rand() % 100 + 1;     // v2 in the range 1 to 100
 v3 = rand() % 30 + 1985;   // v3 in the range 1985-2014 
 ```
 
+* operator priority
+
+```cpp
+a & b == 0 // --> a & (b == 0)
+```
+
 ### Common facts
 
 * For a perfect square series
@@ -656,3 +715,10 @@ v3 = rand() % 30 + 1985;   // v3 in the range 1985-2014
     $$
         \sum_{k = 0}^{n - 1}{(ar^{k})} = a(\dfrac{1 - r^{n}}{1 - r}) 
     $$
+
+* Bit operator
+    ```
+    x ^ 0s = x      x & 0s = 0      x | 0s = x
+    x ^ 1s = ~x     x & 1s = x      x | 1s = 1s
+    x ^ x = 0       x & x = x       x | x = x
+    ```
