@@ -45,14 +45,14 @@ public:
             int mid = lo + (hi - lo) / 2;
             int cnt = 0;
             for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n && matrix[i][j] <= mid; j++) {
+                for (int j = 0; j < n && matrix[i][j] < mid; j++) {
                     cnt++;
                 }
             }
             if (cnt < k) lo = mid + 1;
             else hi = mid - 1;
         }
-        return lo;
+        return hi;
     }
 
 };
