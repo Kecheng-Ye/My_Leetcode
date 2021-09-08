@@ -347,6 +347,41 @@ void swap(vector<int>&nums, int i, int j) {
     }
     ```
 
+    * if the number is dynamically changing, we should use Binary Index Tree
+    ```cpp
+    class Fenwick_Tree {
+    public:
+        Fenwick_Tree(int size) {
+            _sum = vector<int>(size + 1, 0);
+        }
+        
+        
+        void Update(int i, int val) {
+            while(i < _sum.size()) {
+                _sum[i] += val;
+                i += lower_bit(i);
+            }
+        }
+        
+        int Query(int i) {
+            int result = 0;
+            while(i > 0) {
+                result += _sum[i];
+                i -= lower_bit(i);
+            }
+            
+            return result;
+        }
+        
+    private:
+        int lower_bit(int num) {
+            return num & (-num);
+        }
+        
+        vector<int> _sum;
+    };
+    ```
+
 * Binary Tree
     * do inorder traverse by iteration
         ```cpp
@@ -721,4 +756,9 @@ a & b == 0 // --> a & (b == 0)
     x ^ 0s = x      x & 0s = 0      x | 0s = x
     x ^ 1s = ~x     x & 1s = x      x | 1s = 1s
     x ^ x = 0       x & x = x       x | x = x
+
+    -x = ~x + 1
+
+    x & (-x) = lower one
+    x & (x - 1) = delete lower one
     ```
