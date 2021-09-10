@@ -711,6 +711,67 @@ void swap(vector<int>&nums, int i, int j) {
         a = a ^ b;
     }
     ```
+
+* Use integer to represent a letter dictionary for a string
+    ```cpp
+    // Time: O(n^2), Space: O(n)
+    int maxProduct(vector<string>& words) {
+        int n = words.size();
+        
+        // since there are only 26 letters
+        // we can simplify a hashmap representation of letter dict for each word into a 32 bit integer
+        // where each bit represents if this word has this letter or not 
+        vector<int> dictionary(n, 0);
+        
+        for(int i = 0; i < n; i++) {
+            string word = words[i];
+            for(const auto& c : word) {
+                dictionary[i] |= (1 << (c - 'a'));  // has to use or not plus, because we will corrupt other bit if we use plus
+            }
+        }
+        
+        long long result = 0;
+        
+        for(int i = 0; i < n - 1; i++) {
+            for(int j = i + 1; j < n; j++) {
+                if((dictionary[i] & dictionary[j]) == 0) { // all bits are different
+                    result = max(result, (long long)(words[i].size() * words[j].size()));
+                }
+            }
+        }
+        
+        return result;
+    }
+    ```
+
+* check majority element $|x| > \frac{arr.size()}{2}$ in a array
+    ```cpp
+    // Time: O(n), Space: O(1)
+    int majorityElement(vector<int>& nums) {
+        int count = 0, result = nums[0];
+        
+        for(auto& ele: nums) {
+            result = (count == 0) ? ele : result;
+            (ele == result) ? count++ : count--;
+        }
+        
+        return result;
+    }
+    ```
+
+* test how many 5 in a $n!$
+    ```cpp
+    int trailingZeroes(int n) {
+        int result = 0;
+        while(n) {
+            result += n / 5; // how many 5^i in n
+            n /= 5;          // then test how many 5^(i+1) in n
+        }
+        
+        return result;
+    }
+    ```
+
 ### C++ Fun facts
 
 * auto cast

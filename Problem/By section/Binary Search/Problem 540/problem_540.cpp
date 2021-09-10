@@ -10,7 +10,7 @@ public:
         int left = 0, right = size - 1;
         int mid;
 
-        while(left < right) {
+        while(left <= right) {
             mid = left + (right - left) / 2;
             // if we reach left or right bound
             if(mid == 0 || mid == size - 1) {
@@ -23,13 +23,13 @@ public:
                     // the answer must be in the left part
                     right = mid - 1;
                 }else {
-                    left = mid;
+                    left = mid + 2;
                 }
             }else if(nums[mid + 1] != nums[mid]) { // same for rights
                 if((right - mid) % 2 != 0) {
                     left = mid + 1;
                 }else {
-                    right = mid;
+                    right = mid - 2;
                 }
             }
         }
@@ -40,7 +40,7 @@ public:
 
 int main(int argc, char** argv) {
     Solution s;
-    vector<int> input = {1,1,2,2,3,3,4,8,8};
+    vector<int> input = {1,2,2,3,3,4,4,8,8};
     cout << s.singleNonDuplicate(input) << endl;
     return 0;
 }
