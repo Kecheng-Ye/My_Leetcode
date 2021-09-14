@@ -9,12 +9,11 @@ public:
         int n = time.size();
         if(n == 1) return 0;
         
-        unordered_map<int, int> record;
+        vector<int> record(60, 0);
         int result = 0;
         
         for(const auto& num : time) {
-            int complement = (60 - (num % 60)) % 60;
-            result += record[complement];
+            result += record[(60 - num % 60) % 60];
             record[num % 60]++;
         }
         

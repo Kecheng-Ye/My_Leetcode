@@ -23,50 +23,47 @@ public:
     //     return count;
     // }
 
+    // Post Order Approach
+    // Time: O(max(l1.size, l2.size)), Space: O(max(l1.size, l2.size))
     // ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
     //     int size_1 = get_length(l1);
     //     int size_2 = get_length(l2);
         
     //     ListNode* dummy = new ListNode(-1);
+    //     dummy->next = addTwoNumbers(l1, l2, size_1, size_2);
         
-    //     dummy->next = addTwoNumbers(l1, l2, size_1, size_2, max(size_1, size_2));
-    //     if(dummy->next->val >= 10) {
-    //         dummy->next->val %= 10;
-    //         dummy->val = 1;
-    //         return dummy;
-    //     }else{
-    //         return dummy->next;
-    //     }
+    //     return (dummy->next->val > 0) ? dummy->next : dummy->next->next;
+        
     // }
     
-    // ListNode* addTwoNumbers(ListNode* l1, ListNode* l2, int size_1, int size_2, int index) {
-    //     if(!l1 && !l2) return nullptr;
-    //     ListNode* result;
-    //     if(size_1 < index) {
-    //         result = new ListNode(l2->val);
-    //         l2 = l2->next;
-    //         size_2 -= 1;
-    //     }else if(size_2 < index) {
-    //         result = new ListNode(l1->val);
-    //         l1 = l1->next;
-    //         size_1 -= 1;
-    //     }else{
-    //         result = new ListNode(l1->val + l2->val);
-    //         l1 = l1->next;
-    //         l2 = l2->next;
-    //         size_1 -= 1;
-    //         size_2 -= 1;
+    // ListNode* addTwoNumbers(ListNode* l1, ListNode* l2, int size_1, int size_2) {
+    //     if(!l1 && !l2) {
+    //         ListNode* temp = new ListNode(0);
+    //         return temp;
     //     }
         
-    //     index -= 1;
-    //     result->next = addTwoNumbers(l1, l2, size_1, size_2, index);
-    //     if(result->next && result->next->val >= 10) {
-    //         result->next->val %= 10;
-    //         result->val += 1;
+    //     ListNode* after_result;
+    //     ListNode* this_result = new ListNode(0); // overhead for carry
+    //     if(size_1 > size_2) {
+    //         after_result = addTwoNumbers(l1->next, l2, size_1 - 1, size_2);
+    //         after_result->val += l1->val;
+    //     }else if(size_1 < size_2) {
+    //         after_result = addTwoNumbers(l1, l2->next, size_1, size_2 - 1);
+    //         after_result->val += l2->val;
+    //     }else{
+    //         after_result = addTwoNumbers(l1->next, l2->next, size_1 - 1, size_2 - 1);
+    //         after_result->val += l2->val + l1->val;
     //     }
-    //     return result;
+        
+    //     if(after_result->val >= 10) {
+    //         this_result->val = after_result->val / 10;
+    //         after_result->val %= 10;
+    //     }
+        
+    //     this_result->next = after_result;
+        
+    //     return this_result;
     // }
-    
 
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         stack<int> list_1 = linkedlist_to_stack(l1);

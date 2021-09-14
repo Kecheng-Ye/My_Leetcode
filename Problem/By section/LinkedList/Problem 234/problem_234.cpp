@@ -12,51 +12,68 @@ struct ListNode {
 
 class Solution {
 public:
-    ListNode* reverse(ListNode* head) {
-        ListNode *prev = nullptr, *cur = head, *next = head;
+    // ListNode* reverse(ListNode* head) {
+    //     ListNode *prev = nullptr, *cur = head, *next = head;
         
-        while(cur) {
-            next = cur->next;
-            cur->next = prev;
-            prev = cur;
-            cur = next;
-        }
+    //     while(cur) {
+    //         next = cur->next;
+    //         cur->next = prev;
+    //         prev = cur;
+    //         cur = next;
+    //     }
         
-        return prev;
-    }
+    //     return prev;
+    // }
     
-    int get_length(ListNode* head) {
-        int count = 0;
+    // int get_length(ListNode* head) {
+    //     int count = 0;
         
-        while(head) {
-            count ++;
-            head = head->next;
-        }
+    //     while(head) {
+    //         count ++;
+    //         head = head->next;
+    //     }
         
-        return count;
-    }
+    //     return count;
+    // }
     
-    // cut the ListNode into half
-    // reverse the second half, and start comparing
-    // Time: O(n), Space: O(1)
-    bool isPalindrome(ListNode* head) {
-        int n = get_length(head);
-        int mid_point = (n / 2);
+    // // cut the ListNode into half
+    // // reverse the second half, and start comparing
+    // // Time: O(n), Space: O(1)
+    // bool isPalindrome(ListNode* head) {
+    //     int n = get_length(head);
+    //     int mid_point = (n / 2);
         
-        ListNode* temp = head;
-        for(int i = 0; i < mid_point; i++) {
-            temp = temp->next;
-        }
+    //     ListNode* temp = head;
+    //     for(int i = 0; i < mid_point; i++) {
+    //         temp = temp->next;
+    //     }
         
-        ListNode* back = reverse(temp);
-        temp = head;
-        for(int i = 0; i < mid_point; i++) {
-            if(temp->val != back->val) return false;
+    //     ListNode* back = reverse(temp);
+    //     temp = head;
+    //     for(int i = 0; i < mid_point; i++) {
+    //         if(temp->val != back->val) return false;
             
-            temp = temp->next;
-            back = back->next;
-        }
+    //         temp = temp->next;
+    //         back = back->next;
+    //     }
         
+    //     return true;
+    // }
+
+
+    ListNode *left;
+    // one pass, recursive
+    // Time: O(n), Space: O(n)
+    bool isPalidrom(ListNode* head){
+        left = head;
+        return isPalidrom_helper(head);
+    }
+
+    bool isPalidrom_helper(ListNode* right){
+        if(right == nullptr) return true;
+        
+        if(!(isPalidrom_helper(right->next) && (left->val == right->val))) return false;
+        left = left->next;
         return true;
     }
 };
