@@ -7,7 +7,8 @@ public:
     // Time: O(n), Space: O(n)
     int thirdMax(vector<int>& nums) {
         unordered_set<int> record;
-        int max1 = INT_MIN, max2 = INT_MIN, max3 = INT_MIN;
+        // max3 > max2 > max1
+        int max1 = INT_MIN, max2 = INT_MIN, max3 = INT_MIN; 
         for(const int& num : nums) {
             if(record.count(num)) continue;
             

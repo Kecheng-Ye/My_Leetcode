@@ -31,6 +31,9 @@ public:
 
 int main(int argc, char** argv) {
     Solution s;
-    
+    vector<int> nums = {1, 2, 3};
+    int max = *max_element(nums.begin(), nums.end());
+    int min = *min_element(nums.begin(), nums.end());
+    cout << max << " " << min << endl;
     return 0;
 }

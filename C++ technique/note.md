@@ -3,6 +3,8 @@
 * Priority_queue
 
 ```cpp
+// return i > j is a min heap
+// return i < j is a max heap
 auto compare = [](const int i, const int j) {return i > j;};
 std::priority_queue <int, vector<int>, decltype(compare)> pq(compare);
 pq.push()
@@ -30,6 +32,33 @@ q.size();
 q.push();
 q.front();
 q.pop();
+```
+
+* count
+
+```cpp
+count(nums.begin(), nums.end(), target_num);
+```
+
+* copy array
+
+```cpp
+vector<int> from;
+vector<int> dest;
+copy(from.begin() + i, from.begin() + j, dest.begin() + k); // copy all the content from `from[i : j - 1]` to the dest begin from k
+```
+
+* BST
+
+```cpp
+multiset<int> s;
+```
+
+* max/min from a range
+
+```cpp
+int max = *max_element(nums.begin(), nums.end());
+int min = *min_element(nums.begin(), nums.end());
 ```
 
 ### Classic Algorithm
@@ -158,42 +187,130 @@ void swap(vector<int>&nums, int i, int j) {
 }
 ```
 
-* Dynamic Programming
-  * Backpack problem
-    * We have a backpack that has volumn $N$, and we have a bunch of items each has its own volumn $W_i$ and value $V_i$, we want to maximize the total value of the items that can be put into the bag.
+* merge sort
 
-    * Define a $dp[i][j]$ means with $i$ items already seen and $j$ volumn limit, $dp[i][j]$ is the maximum value we can reach
+```cpp
+vector<int> sortArray(vector<int>& nums) {
+    int n = nums.size();
+    vector<int> temp(n);
+    merge_sort(nums, 0, n - 1, temp);
+    return nums;
+}
 
-    * Updates Rule: 
-        $$dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - W_j] + V_j)$$ 
-        Meaning we can either put the $j$th item in the bag or discard it
+void merge_sort(vector<int>& nums, int start, int end, vector<int>& temp) {
+    if(start >= end) return;
+    
+    int mid = start + (end - start) / 2;
+    
+    merge_sort(nums, start, mid, temp);
+    merge_sort(nums, mid + 1, end, temp);
+    
+    merge(nums, temp, start, mid, end);
+    copy(temp.begin() + start, temp.begin() + end + 1, nums.begin() + start);
+}
 
-    * Advance Optimazation: 
-        $dp[i][j]$ only relate to $dp[i - 1][*]$, so we can compress the 2d array into 1d array 
-        
-        $$dp[j] = max(dp[j], dp[j - W_j] + V_j)$$
-        
-        It is worth noting that the $dp[j - W_j]$ is actually the $dp[i - 1][j - W_j]$ item, so once we update $dp[j]$ we must keep the value of last round's $dp[j - W_j]$ intact, meaning we have to **reversely update the whole array!!!**
-
-    ```cpp
-    int knapsack(int N, vector<int>& weights, vector<int>& values) {
-        int size = weights.size();
-        // Have to include the empty bag case for base case
-        vector<int> dp(N + 1, 0); 
-
-        for(int i = 0; i < size; i++) {
-            for(int int j = N; j > 0; j++) {
-                dp[j] = max(dp[j], dp[j - weights[i]] + values[i]);
+void merge(vector<int>& nums, vector<int>& temp, int start, int mid, int end) {
+    int left = start, right = mid + 1;
+    int ptr = start;
+    
+    while(left <= mid || right <= end) {
+        if(left > mid) {
+            temp[ptr++] = nums[right++];
+        }else if(right > end) {
+            temp[ptr++] = nums[left++];
+        }else{
+            if(nums[left] <= nums[right]) {
+                temp[ptr++] = nums[left++];
+            }else{
+                temp[ptr++] = nums[right++];
             }
         }
+    }
+}
+```
+
+* merge sort for LinkedList
+
+    ```cpp
+    ListNode* sortList(ListNode* head) {
+        if(!head || !head->next) return head;
         
-        return dp[N];
+        ListNode *slow = head, *fast = head->next; // slow fast pointer to reach mid point
+        while(fast && fast->next) {
+            fast = fast->next->next;
+            slow = slow->next;
+        }
+        
+        ListNode *right = slow->next;
+        slow->next = nullptr;
+        return merge(sortList(head), sortList(right));
+    }
+    
+    
+    ListNode* merge(ListNode* left, ListNode *right) {
+        if(!right) return left;
+        if(!left) return right;
+        
+        ListNode dummy(0); // won't need to allocate memory in heap
+        ListNode *temp = &dummy;
+        
+        while(left && right) {
+            if(left->val <= right->val) {
+                temp->next = left;
+                left = left->next;
+            }else{
+                temp->next = right;
+                right = right->next;
+            }
+            temp = temp->next;
+        }
+        
+        if(!left) {
+            temp->next = right;
+        }else if(!right) {
+            temp->next = left;
+        }
+        
+        return dummy.next;
     }
     ```
 
-    * If we are dealing with the whole backpack problem([Coin change](https://leetcode.com/problems/coin-change-2/description/)), meaning there are infinite items that we can pack into the bag, then our update rule is $$dp[i][j] = max(dp[i][j - W[i]], dp[i - 1][j])$$ meaning either we completely discard this item and never use it or we use it for once that see if we can still use it. In this way, we cannot do the reverse update rule for optimization because in $dp[j] = max(dp[j - W[i]], dp[j])$, $dp[j - W[i]]$ is the value in $dp[i]$'s round, so we should do **normal sequence update**
+* Dynamic Programming
+    * Backpack problem
+        * We have a backpack that has volumn $N$, and we have a bunch of items each has its own volumn $W_i$ and value $V_i$, we want to maximize the total value of the items that can be put into the bag.
 
-    * If we care about the certain order of items that get packed into the bag, we should change the order of two iterations, meaning we should **first iterate through backpack's volumn then iterate through the items**.
+        * Define a $dp[i][j]$ means with $i$ items already seen and $j$ volumn limit, $dp[i][j]$ is the maximum value we can reach
+
+        * Updates Rule: 
+            $$dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - W_j] + V_j)$$ 
+            Meaning we can either put the $j$th item in the bag or discard it
+
+        * Advance Optimazation: 
+            $dp[i][j]$ only relate to $dp[i - 1][*]$, so we can compress the 2d array into 1d array
+
+            $$dp[j] = max(dp[j], dp[j - W_j] + V_j)$$
+
+            It is worth noting that the $dp[j - W_j]$ is actually the $dp[i - 1][j - W_j]$ item, so once we update $dp[j]$ we must keep the value of last round's $dp[j - W_j]$ intact, meaning we have to **reversely update the whole array!!!**
+
+        ```cpp
+        int knapsack(int N, vector<int>& weights, vector<int>& values) {
+            int size = weights.size();
+            // Have to include the empty bag case for base case
+            vector<int> dp(N + 1, 0); 
+
+            for(int i = 0; i < size; i++) {
+                for(int int j = N; j > 0; j++) {
+                    dp[j] = max(dp[j], dp[j - weights[i]] + values[i]);
+                }
+            }
+            
+            return dp[N];
+        }
+        ```
+
+        * If we are dealing with the whole backpack problem([Coin change](https://leetcode.com/problems/coin-change-2/description/)), meaning there are infinite items that we can pack into the bag, then our update rule is $$dp[i][j] = max(dp[i][j - W[i]], dp[i - 1][j])$$ meaning either we completely discard this item and never use it or we use it for once that see if we can still use it. In this way, we cannot do the reverse update rule for optimization because in $dp[j] = max(dp[j - W[i]], dp[j])$, $dp[j - W[i]]$ is the value in $dp[i]$'s round, so we should do **normal sequence update**
+
+        * If we care about the certain order of items that get packed into the bag, we should change the order of two iterations, meaning we should **first iterate through backpack's volumn then iterate through the items**.
 
 * add two numbers
     * two numbers $x$ and $y$ in their string representation, how to add them digit by digit
@@ -323,6 +440,7 @@ void swap(vector<int>&nums, int i, int j) {
 
 * Prefix Sum
     * Problem Setting: Find a number of continuous subarrays that sum to target.
+
     ```cpp
     int SumPath(vector<int> nums, int target) {
         unordered_map<int, int> record;
@@ -348,6 +466,7 @@ void swap(vector<int>&nums, int i, int j) {
     ```
 
     * if the number is dynamically changing, we should use Binary Index Tree
+
     ```cpp
     class Fenwick_Tree {
     public:
@@ -384,6 +503,7 @@ void swap(vector<int>&nums, int i, int j) {
 
 * Binary Tree
     * do inorder traverse by iteration
+
         ```cpp
         void inorder(TreeNode* root) {
             if(!root) return;
@@ -404,8 +524,9 @@ void swap(vector<int>&nums, int i, int j) {
             }
         }
         ```
-    
+
     * Lowest Common Ancestor
+
     ```cpp
     TreeNode *ans;
     
@@ -436,6 +557,7 @@ void swap(vector<int>&nums, int i, int j) {
     ```
 
 * Fast forward pow $x^n$
+
     ```cpp
     class Solution {
     public:
@@ -466,6 +588,7 @@ void swap(vector<int>&nums, int i, int j) {
     ```
 
 * check number of valid palidroms substrings in a string
+
     ```cpp
     class Solution {
     public:
