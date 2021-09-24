@@ -135,12 +135,15 @@ private:
 };
 
 int main(int argc, char** argv) {
-    LRU cache(2);
-    cache.put(1, 1);
-    cache.put(2, 2);
-    cout << cache << endl;
-    cache.put(3, 3);
-    cout << cache << endl;
-    cout << (*(cache.get(2))) << endl;
+    // LRU cache(2);
+    // cache.put(1, 1);
+    // cache.put(2, 2);
+    // cout << cache << endl;
+    // cache.put(3, 3);
+    // cout << cache << endl;
+    // cout << (*(cache.get(2))) << endl;
+
+    // string s(6);
+    // cout << s << endl;
     return 0;
 }

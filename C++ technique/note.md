@@ -782,7 +782,8 @@ void merge(vector<int>& nums, vector<int>& temp, int start, int mid, int end) {
     ```
 
 * Disjoint Set
-    ```cpp
+
+	```cpp
     class Union_set{
     public:
         Union_set(int size) {
@@ -883,6 +884,7 @@ void merge(vector<int>& nums, vector<int>& temp, int start, int mid, int end) {
     ```
 
 * test how many 5 in a $n!$
+    
     ```cpp
     int trailingZeroes(int n) {
         int result = 0;
@@ -893,6 +895,26 @@ void merge(vector<int>& nums, vector<int>& temp, int start, int mid, int end) {
         
         return result;
     }
+    ```
+
+* check valid parenthese
+
+    ```cpp
+      bool valid_parentheses(string s) {
+          int left = 0, right = 0;
+          
+          for(const auto& c : s) {
+              if(c == '(') {
+                  left++;
+              }else if(c == ')') {
+                  right++;
+              }
+              
+              if(right > left) return false;
+          }
+          
+          return left == right;
+      }
     ```
 
 ### C++ Fun facts
@@ -936,7 +958,8 @@ a & b == 0 // --> a & (b == 0)
     $$
 
 * Bit operator
-    ```
+
+	```
     x ^ 0s = x      x & 0s = 0      x | 0s = x
     x ^ 1s = ~x     x & 1s = x      x | 1s = 1s
     x ^ x = 0       x & x = x       x | x = x
