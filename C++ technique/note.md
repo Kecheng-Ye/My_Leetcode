@@ -61,6 +61,22 @@ int max = *max_element(nums.begin(), nums.end());
 int min = *min_element(nums.begin(), nums.end());
 ```
 
+* string split
+
+```cpp
+std::string s = "scott>=tiger>=mushroom";
+std::string delimiter = ">=";
+
+size_t pos = 0;
+std::string token;
+while ((pos = s.find(delimiter)) != std::string::npos) {
+    token = s.substr(0, pos);
+    std::cout << token << std::endl;
+    s.erase(0, pos + delimiter.length());
+}
+std::cout << s << std::endl;
+```
+
 ### Classic Algorithm
 
 * Binary search
@@ -941,6 +957,13 @@ v3 = rand() % 30 + 1985;   // v3 in the range 1985-2014
 a & b == 0 // --> a & (b == 0)
 ```
 
+* character alrithmetic
+
+```cpp
+char change = (ori - '0' + k + 10) % 10 + '0'; // should first minus a character inorder to change to int, then do the alrithmetic and finally add back a character to change it back to char
+```
+
+
 ### Common facts
 
 * For a perfect square series
@@ -969,3 +992,4 @@ a & b == 0 // --> a & (b == 0)
     x & (-x) = lower one
     x & (x - 1) = delete lower one
     ```
+
