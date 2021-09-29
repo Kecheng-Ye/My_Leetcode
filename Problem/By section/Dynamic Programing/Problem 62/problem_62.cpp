@@ -20,6 +20,7 @@ public:
 
 int main(int argc, char** argv) {
     Solution s;
-    
+    string a = "abc";
+    cout << a.substr(0, 3) << endl;
     return 0;
 }

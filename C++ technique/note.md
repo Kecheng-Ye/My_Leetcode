@@ -299,7 +299,7 @@ void merge(vector<int>& nums, vector<int>& temp, int start, int mid, int end) {
 
         * Updates Rule: 
             $$dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - W_j] + V_j)$$ 
-            Meaning we can either put the $j$th item in the bag or discard it
+            Meaning we can either put the $i$th item in the bag or discard it
 
         * Advance Optimazation: 
             $dp[i][j]$ only relate to $dp[i - 1][*]$, so we can compress the 2d array into 1d array
