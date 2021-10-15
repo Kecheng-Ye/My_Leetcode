@@ -9,7 +9,7 @@ public:
     // update rule
     // 1. dp[i][j][0] = max(dp[i - 1][j][0], dp[i - 1][j][1] + prices[i])
     // meaning if you dont have stock today, you maybe don't have it yesterday or you cell the stock today
-    // 2. dp[i][j][1] = max(dp[i - 1][j][1], dp[i - 1][j][0] - prices[i] - fee)
+    // 2. dp[i][j][1] = max(dp[i - 1][j][1], dp[i - 1][j - 1][0] - prices[i] - fee)
     // meaning if you have stock today, you maybe have it at yesterday or you buy the stock today
     // we will always return dp[n][k][0], because we will always get more profit if we cell the stock at last day
     vector<vector<vector<int>>> dp;
