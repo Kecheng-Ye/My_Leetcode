@@ -4,6 +4,16 @@ using namespace std;
 
 class Solution {
 public:
+
+    // dp[i][j] = the minimal editing different from word1[0,i] to word2[0,j]
+    // update rule
+    // if you get a character match in word1[i] and word2[j]
+    // dp[i][j] = dp[i - 1][j - 1]
+    // else you have to consider three opeartion
+    // 1. insert, 2. delete, 3. replace
+    // dp[i][j] = min( dp[i - 1][j - 1]             if we choose to replace
+    //                 dp[i - 1][j]                 if we choose to delete
+    //                 dp[i][j - 1])                if we choose to insert
     vector<vector<int>> dp;
     
     int minDistance(string word1, string word2) {

@@ -2,136 +2,125 @@
 
 using namespace std;
 
-class LRU {
+class LRUCache {
 public:
-    struct Node {
-        Node* prev;
-        Node* next;
-        int key;
-        int val;
+	struct Node {
+		Node* prev;
+		Node* next;
+		int key;
+		int val;
 
-        Node(int key, int val) : key(key), val(val), prev(nullptr), next(nullptr){};
+		Node(int key, int val) : key(key), val(val), prev(nullptr), next(nullptr){};
 
-        friend std::ostream& operator<<(std::ostream& o, const Node& node) {
-            return o << "[" << node.key << " " << node.val << "]";
-        }
-    };
+		friend std::ostream& operator<<(std::ostream& o, const Node& node) {
+			return o << "[" << node.key << " " << node.val << "]";
+		}
+	};
 
-    LRU(int limit) {
-        list = Linkedlist();
-        fre_map = unordered_map<int, Node*>();
-        size_limit = limit;
-    }
+        LRUCache(int limit) {
+		list = Linkedlist();
+		fre_map = unordered_map<int, Node*>();
+		size_limit = limit;
+	}
 
-    Node *get(int key) {
-        if(!fre_map.count(key)) return nullptr;
+	int get(int key) {
+		if(!fre_map.count(key)) return -1;
 
-        Node *result = fre_map[key];
-        put(result->key, result->val);
+		Node *result = fre_map[key];
+		put(result->key, result->val);
 
-        return result;
-    }
+		return result->val;
+	}
 
-    void put(int key, int val) {
-        Node *new_node = new Node(key, val);
-        if(fre_map.count(key)) {
-            list.remove(fre_map[key]);
-            list.add_first(new_node);
-            fre_map[key] = new_node;        
-        }else{
-            if(list.get_size() == size_limit) {
-                int delete_key = list.remove_last();
-                fre_map.erase(delete_key);
-            }
+	void put(int key, int val) {
+		if(fre_map.count(key)) {
+			fre_map[key]->val = val;
+			list.move_to_head(fre_map[key]);
+		}else{
+			Node *new_node = new Node(key, val);
+			if(list.get_size() == size_limit) {
+				int delete_key = list.remove_last();
+				fre_map.erase(delete_key);
+			}
 
-            list.add_first(new_node);
-            fre_map[key] = new_node;
-        }
-    }
+			list.add_first(new_node);
+			fre_map[key] = new_node;
+		}
+	}
 
-    friend std::ostream& operator<<(std::ostream& o, const LRU& cache) {
-        return o << cache.list;
-    }
+	friend std::ostream& operator<<(std::ostream& o, const LRUCache& cache) {
+		return o << cache.list;
+	}
 
 private:
-    class Linkedlist {
-    public:
-        Linkedlist() {
-            head = nullptr;
-            tail = nullptr;
-            size = 0;
-        }
+	class Linkedlist {
+	public:
+	        Linkedlist() {
+			head = new Node(-1, -1);
+			tail = new Node(-1, -1);
+			head->next = tail;
+			tail->prev = head;
+			size = 0;
+		}
 
-        void add_first(Node *input) {
-            if(size == 0) {
-                head = input;
-                tail = input;
-            }else{
-                input->next = head;
-                head->prev = input;
-                head = input;
-            }
+		void add_first(Node *input) {
+			input->prev = head;
+			input->next = head->next;
 
-            size++;
-        }
+			head->next->prev = input;
+			head->next = input;
 
-        void remove(Node *input) {
-            if(size == 1) {
-                head = nullptr;
-                tail = nullptr;
-            }else if(input == head) {
-                Node* temp = input->next;
-                temp->prev = nullptr;
-                head = temp;
-            }else if(input == tail) {
-                Node* temp = input->prev;
-                temp->next = nullptr;
-                tail = temp;
-            }else{
-                Node* prev_node = input->prev;
-                Node* next_node = input->next;
+			size++;
+		}
 
-                prev_node->next = next_node;
-                next_node->prev = prev_node;
-            }
+		void remove(Node *input, bool reclaim = true) {
+			Node* prev = input->prev;
+			Node* next = input->next;
+			prev->next = next;
+			next->prev = prev;
 
-            delete input;
-            size--;
-        }
+			if(reclaim) delete input;
+			size--;
+		}
 
-        int remove_last() {
-            int cached_key = tail->key;
-            remove(tail);
+		int remove_last() {
+			int cached_key = tail->prev->key;
+			remove(tail->prev);
 
-            return cached_key;
-        }
+			return cached_key;
+		}
 
-        int get_size() {
-            return size;
-        }
+		void move_to_head(Node* node) {
+			remove(node, false);
+			add_first(node);
+		}
 
-        friend std::ostream& operator<<(std::ostream& o, const Linkedlist& list) {
-            Node* iter = list.head;
-            o << "{";
-            while(iter != list.tail) {
-                o << (*iter) << ", ";
-                iter = iter->next;
-            }
+		int get_size() {
+			return size;
+		}
 
-            return o << (*iter) << "}";
-        }
+		friend std::ostream& operator<<(std::ostream& o, const Linkedlist& list) {
+			Node* iter = list.head;
+			o << "{";
+			while(iter != list.tail) {
+				o << (*iter) << ", ";
+				iter = iter->next;
+			}
 
-    private:
-        Node* head;
-        Node* tail;
-        int size;
+			return o << (*iter) << "}";
+		}
+
+	private:
+		Node* head;
+		Node* tail;
+		int size;
 
 
-    };
+	};
 
-    Linkedlist list;
-    unordered_map<int, Node*> fre_map;
-    int size_limit;
+	Linkedlist list;
+	unordered_map<int, Node*> fre_map;
+	int size_limit;
 };
 
 int main(int argc, char** argv) {
