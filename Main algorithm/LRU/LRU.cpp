@@ -17,7 +17,7 @@ public:
 		}
 	};
 
-        LRUCache(int limit) {
+    LRUCache(int limit) {
 		list = Linkedlist();
 		fre_map = unordered_map<int, Node*>();
 		size_limit = limit;
@@ -124,7 +124,7 @@ private:
 };
 
 int main(int argc, char** argv) {
-    // LRU cache(2);
+    // LRUCache cache(2);
     // cache.put(1, 1);
     // cache.put(2, 2);
     // cout << cache << endl;
