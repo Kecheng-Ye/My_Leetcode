@@ -2,3 +2,5 @@
 build/
 .history/
 .vscode/
+.idea/
+**/cmake-build-debug/
