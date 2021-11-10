@@ -16,7 +16,7 @@ public:
             if(record[i - 1]) continue;
 
             for(int j = i * i; j < n; j += i) {
-                if(!record[j - 1]) {
+                if(!record[j - 1]) { // avoid repetition
                     record[j - 1] = true;
                     result ++;
                 }
