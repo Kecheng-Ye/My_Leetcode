@@ -18,20 +18,19 @@ public:
     LFUCache(int capacity): capacity_(capacity), min_freq_(0) {}
     
     int get(int key) {
-        auto it = n_.find(key);
-        if (it == n_.cend()) return -1;
-        touch(it->second);
-        return it->second.value;
+        if (!n_.count(key)) return -1;
+        touch(n_[key]);
+        return n_[key].value;
     }
     
     void put(int key, int value) {
         if (capacity_ == 0) return;
         
-        auto it = n_.find(key);
-        if (it != n_.cend()) {
+        // auto it = n_.find(key);
+        if (!n_.count(key)) {
             // Key already exists, update the value and touch it
-            it->second.value = value;
-            touch(it->second);
+            n_[key].value = value;
+            touch(n_[key]);
             return;
         }
         

@@ -21,6 +21,7 @@ public:
                     continue;
                 }
                 
+                // pruning for extra useless tries
                 if(i > 0 && nums[i] == nums[i - 1] && !(is_visited & (1 << (i - 1)))) {
                     continue;
                 }
