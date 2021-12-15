@@ -4,11 +4,16 @@ using namespace std;
 
 class Solution {
 public:
+    // find the arr is rotated at which index first
+    // then determine which part the target will fall into
+    // then do a normal binary search
+    // Time: O(logn), Space: O(1)
     int search(vector<int>& nums, int target) {
         int n = nums.size();
         
         int l = 0, r = n - 1;
         int rotate_idx;
+
         if(nums[l] < nums[r]) {
             rotate_idx = 0;
         }else{
