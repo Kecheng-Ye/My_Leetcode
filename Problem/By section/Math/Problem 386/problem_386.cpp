@@ -13,6 +13,7 @@ public:
             if(back * 10 <= n) {
                 result.push_back(back * 10);
             }else{
+                // 199 should degrade to 2 in this case
                 while(back + 1 > n || (back + 1) % 10 == 0 ) {
                     back /= 10;
                 }

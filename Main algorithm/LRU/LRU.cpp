@@ -55,12 +55,25 @@ public:
 private:
 	class Linkedlist {
 	public:
-	        Linkedlist() {
+	    Linkedlist() {
 			head = new Node(-1, -1);
 			tail = new Node(-1, -1);
 			head->next = tail;
 			tail->prev = head;
 			size = 0;
+		}
+
+		~Linkedlist() {
+			Node* temp = tail->prev, *prev_node = nullptr;
+
+			while(temp != head) {
+				prev_node = temp->prev;
+				delete temp;
+				temp = prev_node;
+			}
+
+			delete head;
+			delete tail;
 		}
 
 		void add_first(Node *input) {

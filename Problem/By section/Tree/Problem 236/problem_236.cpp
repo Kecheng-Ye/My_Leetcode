@@ -24,6 +24,7 @@ public:
         return ans;
     }
     
+    // traverse(root) will only return {1, 0}, denoting if the subtree start at root can meet target node p or q
     bool traverse(TreeNode* root, TreeNode* p, TreeNode* q) {
         if(!root) return false;
         
@@ -39,6 +40,7 @@ public:
         
         // Note !!!
         // we only return if one target node has been detected from this root
+        // in this case, the above if statement will only be satisfied by once, which is indeed a LCA
         return (meet_target_node_left + meet_target_node_right + meet_target_node_self > 0);
         
     }

@@ -4,7 +4,7 @@ using namespace std;
 
 class Solution {
 public:
-    // dp[i] = prefix_max_left
+    // dp_l[i] = max(height[: i]), dp_r[i] = max(height[i : ])
     // Time: O(n), Space: O(n)
     // int trap(vector<int>& height) {
     //     int n = height.size();

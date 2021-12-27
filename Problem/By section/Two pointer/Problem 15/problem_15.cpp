@@ -10,9 +10,11 @@ public:
         vector<vector<int>> result;
         
         for(int k = 0; k < n; k++) {
+            // remove duplicate
             if(k > 0 && nums[k] == nums[k - 1]) continue;
-            
+            // remove duplicate
             int i = k + 1, j = n - 1;
+            
             int target = -1 * nums[k];
             
             while(i < j) {
