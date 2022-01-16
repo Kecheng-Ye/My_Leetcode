@@ -36,7 +36,7 @@ public:
 };
 
 int main(int argc, char** argv) {
-    Solution s;
+    // Solution s;
     
     return 0;
 }

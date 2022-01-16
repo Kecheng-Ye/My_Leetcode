@@ -6,59 +6,59 @@ class Solution {
 public:
     // DFS Approach
     // Time: O(n + qn), Space: O(n)
-//     vector<double> calcEquation(vector<vector<string>>& equations, vector<double>& values, vector<vector<string>>& queries) {
-//         unordered_map<string, vector<pair<string, double>>> graph = construct_graph(equations, values);
-//         int n = queries.size();
-//         vector<double> result(n);
+    // vector<double> calcEquation(vector<vector<string>>& equations, vector<double>& values, vector<vector<string>>& queries) {
+    //     unordered_map<string, vector<pair<string, double>>> graph = construct_graph(equations, values);
+    //     int n = queries.size();
+    //     vector<double> result(n);
         
         
-//         for(int i = 0; i < n; i++) {
-//             string a = queries[i][0];
-//             string b = queries[i][1];
+    //     for(int i = 0; i < n; i++) {
+    //         string a = queries[i][0];
+    //         string b = queries[i][1];
             
-//             unordered_set<string> record;
-//             result[i] = DFS(graph, a, b, record);
-//         }
+    //         unordered_set<string> record;
+    //         result[i] = DFS(graph, a, b, record);
+    //     }
         
-//         return result;
+    //     return result;
         
-//     }
+    // }
     
-//     unordered_map<string, vector<pair<string, double>>> construct_graph(vector<vector<string>>& equations, vector<double>& values) {
-//         int n = equations.size();
-//         unordered_map<string, vector<pair<string, double>>> graph;
+    // unordered_map<string, vector<pair<string, double>>> construct_graph(vector<vector<string>>& equations, vector<double>& values) {
+    //     int n = equations.size();
+    //     unordered_map<string, vector<pair<string, double>>> graph;
         
         
-//         for(int i = 0; i < n; i++) {
-//             string a = equations[i][0];
-//             string b = equations[i][1];
-//             graph[a].push_back({b, values[i]});
-//             graph[b].push_back({a, 1 / values[i]});
-//         }
+    //     for(int i = 0; i < n; i++) {
+    //         string a = equations[i][0];
+    //         string b = equations[i][1];
+    //         graph[a].push_back({b, values[i]});
+    //         graph[b].push_back({a, 1 / values[i]});
+    //     }
         
-//         return graph;
-//     }
+    //     return graph;
+    // }
     
-//     double DFS(unordered_map<string, vector<pair<string, double>>>& graph, string a, string b, unordered_set<string>& visited) {
-//         if(!graph.count(a) || !graph.count(b)) {
-//             return -1;
-//         }
+    // double DFS(unordered_map<string, vector<pair<string, double>>>& graph, string a, string b, unordered_set<string>& visited) {
+    //     if(!graph.count(a) || !graph.count(b)) {
+    //         return -1;
+    //     }
         
-//         if(a == b) return 1;
+    //     if(a == b) return 1;
         
-//         visited.insert(a);
+    //     visited.insert(a);
         
-//         for(const auto& neighbour : graph[a]) {
-//             string node = neighbour.first;
-//             if(visited.count(node)) continue;
+    //     for(const auto& neighbour : graph[a]) {
+    //         string node = neighbour.first;
+    //         if(visited.count(node)) continue;
             
-//             double result = DFS(graph, node, b, visited);
+    //         double result = DFS(graph, node, b, visited);
             
-//             if(result > 0) return neighbour.second * result; 
-//         }
+    //         if(result > 0) return neighbour.second * result; 
+    //     }
         
-//         return -1;
-//     }
+    //     return -1;
+    // }
     
     // Disjoint set approach
     // Time: O(n + q), Space: O(n)

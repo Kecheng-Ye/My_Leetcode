@@ -37,9 +37,7 @@ public:
     }
     
     uint8_t reverseBytes(uint8_t input) {
-        // printf("%x\n", (char*)input);
         if(record.count(input)) {
-            // printf("%x\n", (char*)record[input]);
             return record[input];
         }
         
