@@ -58,7 +58,7 @@ public:
                 result.push_back(interval);
             }else{
                 newInterval[START] = min(newInterval[START], interval[START]);
-                newInterval[END] = min(newInterval[END], interval[END]);
+                newInterval[END] = max(newInterval[END], interval[END]);
             }
         }
 

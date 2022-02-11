@@ -34,9 +34,9 @@ public:
     }
     
 private:
-  static bool compare(const pair<int, int>& a, const pair<int, int>& b) {
-    return a.second > b.second;
-  }
+    static bool compare(const pair<int, int>& a, const pair<int, int>& b) {
+      return a.second > b.second;
+    }
 };
 
 int main(int argc, char** argv) {

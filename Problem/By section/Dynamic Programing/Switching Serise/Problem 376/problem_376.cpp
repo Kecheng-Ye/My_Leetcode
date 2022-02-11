@@ -9,8 +9,8 @@ public:
         int size = nums.size();
         if(size <= 1) return size;
         
-        // down = the length of the longest subsequence ends with nums[i] and nums[i - 1] > nums[i]
-        // up = the length of the longest subsequence ends with nums[i] and nums[i - 1] < nums[i]
+        // down = the length of the longest subsequence of nums[0:i] with last two value being nums[end - 1] > nums[end]
+        // up = the length of the longest subsequence of nums[0:i] with last two value being nums[end - 1] <>> nums[end]
         int up = 1;
         int down = 1;
         
