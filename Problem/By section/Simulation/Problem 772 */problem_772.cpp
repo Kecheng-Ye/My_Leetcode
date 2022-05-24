@@ -52,15 +52,15 @@ public:
                             break;
                     }
                     
-                    // then cache the current sign
-                    sign = s[start];
-                    
                     // if this char is a back bracket
                     // we should exit the loop immediately
-                    if(s[start] == ')') {
+                    if(s[start] == ')' || start == n - 1) {
                         start++;
                         break;
                     }
+
+                    // then cache the current sign
+                    sign = s[start];
                     
                     // fresh the num
                     num = 0;

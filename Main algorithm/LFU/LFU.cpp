@@ -2,94 +2,148 @@
 
 using namespace std;
 
-// Author: Huahua
-// Running time: 89 ms (beats 96.3%)
- 
-struct CacheNode {
-    int key;
-    int value;
-    int freq;
-    // pointer to the node in the list
-    list<int>::const_iterator it;
-};
- 
 class LFUCache {
 public:
-    LFUCache(int capacity): capacity_(capacity), min_freq_(0) {}
+    LFUCache(int capacity): record(), freq_lst(), capacity(capacity), min_freq(0) {
+        
+    }
     
     int get(int key) {
-        if (!n_.count(key)) return -1;
-        touch(n_[key]);
-        return n_[key].value;
+        if(!record.count(key)) return -1;
+        
+        update(key);
+        return record[key]->val;
     }
     
     void put(int key, int value) {
-        if (capacity_ == 0) return;
+        if (capacity == 0) return;
         
-        // auto it = n_.find(key);
-        if (!n_.count(key)) {
-            // Key already exists, update the value and touch it
-            n_[key].value = value;
-            touch(n_[key]);
-            return;
-        }
-        
-        if (n_.size() == capacity_) {
-            // No capacity, need to remove one entry that
-            // 1. has the lowest freq
-            // 2. least recently used if there are multiple ones
+        if(record.count(key)) {
+            record[key]->val = value;
+            update(key);
+        }else{
+            if(record.size() == capacity) {
+                int key = freq_lst[min_freq].remove_last();
+                record.erase(key);
+                
+                if(freq_lst[min_freq].get_size() == 0) {
+                    freq_lst.erase(min_freq);
+                }   
+            }
             
-            // Step 1: remove the element from min_freq_ list
-            const int key_to_evict = l_[min_freq_].back();
-            l_[min_freq_].pop_back();
-            
-            // Step 2: remove the key from cache
-            n_.erase(key_to_evict);
+            min_freq = 1;
+            Node *new_node = new Node(key, value, 1);
+            record[key] = new_node;
+            freq_lst[min_freq].add_first(new_node);
         }
-        
-        // We know new item has freq of 1, thus set min_freq to 1
-        const int freq = 1;
-        min_freq_ = freq;
-        
-        // Add the key to the freq list
-        l_[freq].push_front(key);
-        
-        // Create a new node
-        n_[key] = {key, value, freq, l_[freq].cbegin()};
     }
+    
 private:
-    void touch(CacheNode& node) {
-        // Step 1: update the frequency
-        const int prev_freq = node.freq;
-        const int freq = ++(node.freq);
+    void update(int key) {
+        Node *target = record[key];
         
-        // Step 2: remove the entry from old freq list
-        l_[prev_freq].erase(node.it);
-        
-        if (l_[prev_freq].empty() && prev_freq == min_freq_) {
-            // Delete the list
-            l_.erase(prev_freq);
-            
-            // Increase the min freq
-            ++min_freq_;
+        freq_lst[target->freq].remove(target, false);
+        if(freq_lst[target->freq].get_size() == 0 && min_freq == target->freq) {
+            freq_lst.erase(target->freq);
+            min_freq++;
         }
         
-        // Step 4: insert the key into the front of the new freq list
-        l_[freq].push_front(node.key);
-        
-        // Step 5: update the pointer
-        node.it = l_[freq].cbegin();
+        target->freq++;
+        freq_lst[target->freq].add_first(target);
     }
     
-    int capacity_;
-    int min_freq_;
+    struct Node {
+		Node* prev;
+		Node* next;
+		int key;
+		int val;
+        int freq;
+
+		Node(int key, int val, int freq) : key(key), val(val), freq(freq), prev(nullptr), next(nullptr){};
+	};
     
-    // key -> CacheNode
-    unordered_map<int, CacheNode> n_;
+    class Linkedlist {
+	public:
+		// fix a useless head and tail
+		// that makes the insert and delete much easier
+	    Linkedlist() {
+			head = new Node(-1, -1, -1);
+			tail = new Node(-1, -1, -1);
+			head->next = tail;
+			tail->prev = head;
+			size = 0;
+		}
+
+		~Linkedlist() {
+			Node* cur = head, *next = nullptr;
+            
+            while(cur) {
+                next = cur->next;
+                delete cur;
+                cur = next;
+            }
+		}
+
+        Node* get_last() {
+            if(!size) return nullptr;
+            
+            return tail->prev;
+        }
+        
+		void add_first(Node *input) {
+			input->prev = head;
+			input->next = head->next;
+
+			head->next->prev = input;
+			head->next = input;
+
+			size++;
+		}
+
+		void remove(Node *input, bool reclaim = true) {
+			Node* prev = input->prev;
+			Node* next = input->next;
+			prev->next = next;
+			next->prev = prev;
+
+			if(reclaim) delete input;
+			size--;
+		}
+
+		int remove_last() {
+			int cached_key = tail->prev->key;
+			remove(tail->prev);
+
+			return cached_key;
+		}
+
+		void move_to_head(Node* node) {
+			remove(node, false);
+			add_first(node);
+		}
+
+		int get_size() {
+			return size;
+		}
+
+	private:
+		Node* head;
+		Node* tail;
+		int size;
+	};
     
-    // freq -> keys with freq
-    unordered_map<int, list<int>> l_;
+    unordered_map<int, Node*> record;
+    unordered_map<int, Linkedlist> freq_lst;
+    int capacity;
+    int min_freq;
 };
+
+/**
+ * Your LFUCache object will be instantiated and called as such:
+ * LFUCache* obj = new LFUCache(capacity);
+ * int param_1 = obj->get(key);
+ * obj->put(key,value);
+ */
 
 int main(int argc, char** argv) {
     return 0;
