@@ -50,7 +50,7 @@ public class heap <Key extends Comparable<Key>>{
             k = big_child;
         }
     }
-    
+
     private void exch(int i, int j) {
         Key temp = heap[i];
         heap[i] = heap[j];
@@ -60,6 +60,6 @@ public class heap <Key extends Comparable<Key>>{
     private boolean less(int i, int j) {
         return heap[i].compareTo(heap[j]) < 0;
     }
-    
-    
+
+
 }

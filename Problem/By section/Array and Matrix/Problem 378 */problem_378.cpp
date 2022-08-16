@@ -43,23 +43,33 @@ public:
         int lo = matrix[0][0], hi = matrix[n - 1][n - 1];
         while (lo < hi) {
             int mid = lo + (hi - lo) / 2;
-            int cnt = 0;
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n && matrix[i][j] < mid; j++) {
-                    cnt++;
-                }
-            }
+            int cnt = countNumsLessOrEqualThanK(matrix, k, n);
             if (cnt < k) lo = mid + 1;
             else hi = mid;
         }
         return lo;
     }
 
+    int countNumsLessOrEqualThanK(vector<vector<int>>& matrix, int k, int n) {
+        int row = 0, col = n - 1;
+        int count = 0;
+        while (row < n && col >= 0) {
+            if (matrix[row][col] > k) {
+                col--;
+            } else {
+                count += col + 1;
+                row++;
+            }
+        }
+
+        return count;
+    }
+
 };
 
 int main(int argc, char** argv) {
     Solution s;
-    
+
     vector<vector<int>> test = {{1,5,9},{10,11,13},{12,13,15}};
     s.kthSmallest(test, 5);
 

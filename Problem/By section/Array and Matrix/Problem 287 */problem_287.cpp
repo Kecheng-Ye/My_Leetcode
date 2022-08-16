@@ -6,18 +6,23 @@ class Solution {
 public:
     // Time: O(n), Space: O(1)
     // int findDuplicate(vector<int>& nums) {
-    //     while(nums[0] != nums[nums[0]])
-    //         swap(nums, 0, nums[0]);
-        
+    //     for(int i = 0; i < nums.size(); i++) {
+    //         while(i != nums[i] - 1) {
+    //             if(nums[nums[i] - 1] == nums[i]) return nums[i];
+
+    //             swap(nums, nums[i] - 1, i);
+    //         }
+    //     }
+
     //     return -1;
     // }
-    
+
     // void swap(vector<int>& nums, int i, int j) {
     //     int temp = nums[i];
     //     nums[i] = nums[j];
     //     nums[j] = temp;
     // }
-    
+
     // Time: O(nlogn), Space: O(1)
     // int findDuplicate(vector<int>& nums) {
     //     // 'low' and 'high' represent the range of values of the target
@@ -25,13 +30,13 @@ public:
     //     int duplicate = -1;
     //     while (low <= high) {
     //         int cur = (low + high) / 2;
-            
+
     //         int cnt = 0;
     //         for(int& num : nums) {
     //             if(num <= cur) cnt++;
     //         }
 
-    //         if (cnt > cur) { 
+    //         if (cnt > cur) {
     //             duplicate = cur;
     //             high = cur - 1;
     //         } else {
@@ -66,6 +71,6 @@ public:
 
 int main(int argc, char** argv) {
     Solution s;
-    
+
     return 0;
 }

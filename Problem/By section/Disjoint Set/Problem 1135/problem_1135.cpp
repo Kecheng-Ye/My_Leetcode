@@ -4,7 +4,8 @@ using namespace std;
 
 class Solution {
 public:
-    
+    // Kruskal's algorithm
+    // Time: O(ElogE) Space: O(V)
     int minimumCost(int n, vector<vector<int>>& connections) {
         if(n == 1) return 0;
         

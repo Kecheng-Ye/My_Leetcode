@@ -151,6 +151,8 @@ public:
     private:
         unordered_map<string, int> rank;
         unordered_map<string, pair<string, double>> parent;
+                              //   parent name, value that times node itself equals parent
+                              //   e.g node = a, parent = x,  value = x/a                 
     };
 };
 
