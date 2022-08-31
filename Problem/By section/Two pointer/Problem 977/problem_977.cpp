@@ -7,37 +7,31 @@ public:
     // Time: O(n), Space: O(1)
     vector<int> sortedSquares(vector<int>& nums) {
         int n = nums.size();
-        if(n == 1) return {nums[0] * nums[0]};
-        
-        int neg, pos = 0;
-        int idx = 0;
+
         vector<int> result(n, 0);
-        
-        for(; pos < n && nums[pos] < 0; pos++)
-            ;
-        neg = pos - 1;
-        
-        while(idx < n) {
-            int target;
-            if(neg < 0) {
-                target = nums[pos] * nums[pos++];
-            }else if(pos >= n) {
-                target = nums[neg] * nums[neg--];
-            }else if(abs(nums[neg]) > nums[pos]) {
-                target = nums[pos] * nums[pos++];
-            }else{
-                target = nums[neg] * nums[neg--];
+        int idx = n - 1;
+
+        int i = 0, j = n - 1;
+
+        while (i <= j) {
+            int left_square = pow(nums[i], 2);
+            int right_square = pow(nums[j], 2);
+
+            if (left_square >= right_square) {
+                result[idx--] = left_square;
+                i ++;
+            } else {
+                result[idx--] = right_square;
+                j --;
             }
-            
-            result[idx++] = target;
         }
-        
+
         return result;
     }
 };
 
 int main(int argc, char** argv) {
     Solution s;
-    
+
     return 0;
 }

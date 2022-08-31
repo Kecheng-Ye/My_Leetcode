@@ -4,23 +4,21 @@ using namespace std;
 
 class Solution {
 public:
-    // Time: O(n), Space: O(1)
     void moveZeroes(vector<int>& nums) {
+        int first_zero = 0;
         int n = nums.size();
-        if(n <= 1) return; 
-        
-        int offset = 0;
-        for(int i = 0; i < n; i++) {
-            if(nums[i]) {
-                if(i != offset) {
-                    swap(nums, i, offset);
+
+        for (int i = 0; i < n; i++) {
+            if (nums[i] != 0) {
+                if (first_zero != i) {
+                    swap(nums, first_zero, i);
                 }
-                
-                offset++;
+
+                first_zero++;
             }
         }
     }
-    
+
     void swap(vector<int>& nums, int i, int j) {
         int temp = nums[i];
         nums[i] = nums[j];
@@ -30,6 +28,6 @@ public:
 
 int main(int argc, char** argv) {
     Solution s;
-    
+
     return 0;
 }

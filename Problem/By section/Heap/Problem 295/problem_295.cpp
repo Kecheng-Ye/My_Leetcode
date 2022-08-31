@@ -6,9 +6,9 @@ class MedianFinder {
 public:
     // Space: O(n)
     MedianFinder(): small_half(), bigger_half(), size(0) {
-        
+
     }
-    
+
     // Time: O(logn)
     void addNum(int num) {
         if(!size) {
@@ -22,25 +22,21 @@ public:
 
             if(abs((int)small_half.size() - (int)bigger_half.size()) >= 2) {
                 balance();
-            }   
+            }
         }
-        
+
         size++;
     }
-    
+
     // Time: O(logn)
     double findMedian() {
         if(size % 2 != 0) {
             return (small_half.size() > bigger_half.size()) ? small_half.top() : bigger_half.top();
         }else{
-            if(small_half.size() != bigger_half.size()) {
-                balance();
-            }
-            
             return (double)(small_half.top() + bigger_half.top()) / 2;
         }
     }
-    
+
 private:
     void balance() {
         if(small_half.size() > bigger_half.size()) {
@@ -51,7 +47,7 @@ private:
             bigger_half.pop();
         }
     }
-    
+
     priority_queue<int, vector<int>> small_half;                // first half of the arr, maintained by a max heap
     priority_queue<int, vector<int>, greater<int>> bigger_half; // second hald of the arr, maintained by a min heap
     int size;
@@ -66,6 +62,6 @@ private:
 
 int main(int argc, char** argv) {
     // Solution s;
-    
+
     return 0;
 }

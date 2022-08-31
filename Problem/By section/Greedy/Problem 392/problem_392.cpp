@@ -5,7 +5,7 @@ using namespace std;
 class Solution {
 public:
     // Time: O(t.size), Space: O(t.size)
-    // Note: only we construct the letterIndicesTable for once, then for all the following query, we only need Time: O(s.size)
+    // Note: only we construct the letterIndicesTable for once, then for all the following query, we only need Time: O(s.size + log(t.size))
     bool isSubsequence(string s, string t) {
         // precomputation, build the hashmap out of the target string
         unordered_map<char, vector<int>> letterIndicesTable;
@@ -20,20 +20,33 @@ public:
 
             bool isMatched = false;
             // greedy match with linear search
-            for (int matchIndex : letterIndicesTable[letter]) {
-                if (currMatchIndex < matchIndex) { // if you meet an 'a' at index 1, you cannot match the 'a' at index 0 in t, because the 0 index is for other char
-                    currMatchIndex = matchIndex;
-                    isMatched = true;
-                    break;
-                }
-            }
+            int greedy_result = binary_search(letterIndicesTable[letter], currMatchIndex);
 
-            if (!isMatched)
+            if (greedy_result == -1)
                 return false;
+
+            currMatchIndex = greedy_result;
         }
 
         // consume all characters in the source string
         return true;
+    }
+
+    int binary_search(vector<int>& letterIndices, int target) {
+        int i = 0, j = letterIndices.size();
+
+        while (i < j) {
+            int mid = i + (j - i) / 2;
+
+            if (letterIndices[mid] <= target) {
+                i = mid + 1;
+            } else {
+                j = mid;
+            }
+        }
+
+        if (i >= letterIndices.size()) return -1;
+        return letterIndices[i];
     }
 };
 

@@ -5,19 +5,19 @@ using namespace std;
 class LFUCache {
 public:
     LFUCache(int capacity): record(), freq_lst(), capacity(capacity), min_freq(0) {
-        
+
     }
-    
+
     int get(int key) {
         if(!record.count(key)) return -1;
-        
+
         update(key);
         return record[key]->val;
     }
-    
+
     void put(int key, int value) {
         if (capacity == 0) return;
-        
+
         if(record.count(key)) {
             record[key]->val = value;
             update(key);
@@ -25,33 +25,33 @@ public:
             if(record.size() == capacity) {
                 int key = freq_lst[min_freq].remove_last();
                 record.erase(key);
-                
+
                 if(freq_lst[min_freq].get_size() == 0) {
                     freq_lst.erase(min_freq);
-                }   
+                }
             }
-            
+
             min_freq = 1;
             Node *new_node = new Node(key, value, 1);
             record[key] = new_node;
             freq_lst[min_freq].add_first(new_node);
         }
     }
-    
+
 private:
     void update(int key) {
         Node *target = record[key];
-        
+
         freq_lst[target->freq].remove(target, false);
         if(freq_lst[target->freq].get_size() == 0 && min_freq == target->freq) {
             freq_lst.erase(target->freq);
             min_freq++;
         }
-        
+
         target->freq++;
         freq_lst[target->freq].add_first(target);
     }
-    
+
     struct Node {
 		Node* prev;
 		Node* next;
@@ -61,7 +61,7 @@ private:
 
 		Node(int key, int val, int freq) : key(key), val(val), freq(freq), prev(nullptr), next(nullptr){};
 	};
-    
+
     class Linkedlist {
 	public:
 		// fix a useless head and tail
@@ -76,7 +76,7 @@ private:
 
 		~Linkedlist() {
 			Node* cur = head, *next = nullptr;
-            
+
             while(cur) {
                 next = cur->next;
                 delete cur;
@@ -86,10 +86,10 @@ private:
 
         Node* get_last() {
             if(!size) return nullptr;
-            
+
             return tail->prev;
         }
-        
+
 		void add_first(Node *input) {
 			input->prev = head;
 			input->next = head->next;
@@ -131,7 +131,7 @@ private:
 		Node* tail;
 		int size;
 	};
-    
+
     unordered_map<int, Node*> record;
     unordered_map<int, Linkedlist> freq_lst;
     int capacity;

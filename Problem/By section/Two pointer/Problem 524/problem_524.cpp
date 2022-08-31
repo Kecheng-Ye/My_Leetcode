@@ -23,12 +23,12 @@ public:
         return result;
     }
 
-    bool string_truncate(string orignal, string target) {
+    bool string_truncate(string original, string target) {
         int ptr_ori = 0;
         int ptr_tar = 0;
 
-        while(ptr_ori < orignal.length() && ptr_tar < target.length()) {
-            if(orignal[ptr_ori++] == target[ptr_tar]) {
+        while(ptr_ori < original.length() && ptr_tar < target.length()) {
+            if(original[ptr_ori++] == target[ptr_tar]) {
                 ptr_tar++;
             }
         }
