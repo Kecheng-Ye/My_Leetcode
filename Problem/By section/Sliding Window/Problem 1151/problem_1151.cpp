@@ -9,29 +9,34 @@ public:
     // Time: O(n), Space: O(1)
     int minSwaps(vector<int>& data) {
         int ones = 0;
-        for(const int i : data)
-            ones += 1;
-
-        int cnt_one = 0, max_one = 0;
-        int left = 0, right = 0;
-
-        while (right < data.size()) {
-            // updating the number of 1's by adding the new element
-            cnt_one += data[right++];
-            // maintain the length of the window to ones
-            if (right - left > ones) {
-                // updating the number of 1's by removing the oldest element
-                cnt_one -= data[left++];
-            }
-            // record the maximum number of 1's in the window
-            max_one = max(max_one, cnt_one);
+        for(const int i : data) {
+            if (i) ones += 1;
         }
-        return ones - max_one;
+
+        int n = data.size();
+        int left = 0, right = 0;
+        int numberOfZeros = 0;
+        int result = INT_MAX;
+
+        while (right < n) {
+            int num1 = data[right];
+            if (!num1) numberOfZeros++;
+            right++;
+
+            if (right - left == ones) {
+                int num2 = data[left];
+                result = min(result, numberOfZeros);
+                if (!num2) numberOfZeros--;
+                left++;
+            }
+        }
+
+        return result == INT_MAX ? 0 : result;
     }
 };
 
 int main(int argc, char** argv) {
     Solution s;
-    
+
     return 0;
 }

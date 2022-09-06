@@ -4,7 +4,8 @@ using namespace std;
 
 class Solution {
 public:
-    // Time: O(t.size), Space: O(t.size)
+    // m = s.size(), n = t.size()
+    // Time: O(mlogn), Space: O(n)
     // Note: only we construct the letterIndicesTable for once, then for all the following query, we only need Time: O(s.size + log(t.size))
     bool isSubsequence(string s, string t) {
         // precomputation, build the hashmap out of the target string
@@ -18,8 +19,7 @@ public:
             if (!letterIndicesTable.count(letter))
                 return false; // no match, early exist
 
-            bool isMatched = false;
-            // greedy match with linear search
+            // greedy match with binary search
             int greedy_result = binary_search(letterIndicesTable[letter], currMatchIndex);
 
             if (greedy_result == -1)

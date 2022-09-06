@@ -4,36 +4,40 @@ using namespace std;
 
 class Solution {
 public:
-    // Time: O(n), Space: O(n)
+    // Time: O(n), Space: O(1)
     int lengthOfLongestSubstringKDistinct(string s, int k) {
         int n = s.size();
-        if(k == 0) return 0;
-        unordered_map<char, int> record;
-        
-        
         int left = 0, right = 0;
+        int numOfDistinctChar = 0;
         int result = 0;
-        while(right < n) {
-            if(!record[s[right]]) k--;
-            
-            while(k < 0) {
-                record[s[left]]--;
-                if(record[s[left]] == 0) k++;
+        vector<int> record(256, 0);
+
+        while (right < n) {
+            char c1 = s[right];
+            record[c1] ++;
+            if (record[c1] == 1) {
+                numOfDistinctChar ++;
+            }
+            right++;
+
+            while (numOfDistinctChar > k) {
+                char c2 = s[left];
+                record[c2] --;
+                if (record[c2] == 0) {
+                    numOfDistinctChar --;
+                }
                 left++;
             }
-            
-            // printf("%d %d %d\n", right, left, k);
-            
-            result = max(result, right - left + 1);
-            record[s[right++]]++;
+
+            result = max(result, right - left);
         }
-        
+
         return result;
     }
 };
 
 int main(int argc, char** argv) {
     Solution s;
-    
+
     return 0;
 }

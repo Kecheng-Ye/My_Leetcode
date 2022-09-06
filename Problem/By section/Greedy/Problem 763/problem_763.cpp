@@ -4,33 +4,33 @@ using namespace std;
 
 class Solution {
 public:
+    // Jump game approach
+    // Time: O(n), Space: O(1)
     vector<int> partitionLabels(string s) {
-        unordered_map<char, int> map;
+       vector<int> last_pos(26, -1);
+        int n = s.size();
+
+        if (n <= 1) return {n};
+
+        for (int i = 0; i < n; i++) {
+            last_pos[s[i] - 'a'] = i;
+        }
+
         vector<int> result;
+        int cur_boundary = 0;
+        int prev_point = 0;
 
-        for(int i = 0; i < s.length(); i++) {
-            char character = s[i];
-
-            map[character] = i;
-        }
-
-        int prev = -1;
-        for(int i = 0; i < s.length(); i++) {
-            int start = i;
-            int partition_end = map[s[start]];
-
-            while(start < partition_end) {
-                partition_end = max(partition_end, map[s[++start]]);
+        for (int i = 0; i < n; i++) {
+            if (cur_boundary < i) {
+                int length = cur_boundary + 1 - prev_point;
+                result.push_back(length);
+                prev_point = i;
             }
-
-            result.push_back(partition_end - prev);
-            
-            prev = partition_end;
-            i = partition_end;
+            cur_boundary = max(cur_boundary, last_pos[s[i] - 'a']);
         }
 
+        result.push_back(n - prev_point);
         return result;
-
     }
 };
 

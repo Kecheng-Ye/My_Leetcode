@@ -8,19 +8,29 @@ public:
     bool checkPossibility(vector<int>& nums) {
         int size = nums.size();
         if(size < 2) return true;
-        
+
         int count = 0;
         for(int i = 1; i < size && count < 2; i++) {
             if(nums[i] < nums[i - 1]) {
                 count++;
 
-                if((i > 1 && nums[i - 2] > nums[i]) && (i < size - 1 && nums[i - 1] > nums[i + 1])) {
+                // for a sub sequence [a1, a2, a3, a4]
+                // we have a2 > a3
+                // 1. if a1 < a3, then we can change a2 to a3, result array [a1, a3, a3, a4] will be valid
+                // 2. if a2 < a4, then we can change a3 to a2, result array [a1, a2, a2, a4] will be valid
+                // 3. Otherwise, we can not resolve the conflict
+                if(count > 1 ||
+                    (
+                        (i > 1 && nums[i - 2] > nums[i]) &&
+                        (i < size - 1 && nums[i - 1] > nums[i + 1])
+                    )
+                ) {
                     return false;
                 }
             }
         }
 
-        return count < 2;
+        return true;
     }
 };
 
