@@ -17,7 +17,7 @@ class solution{
 
     private boolean isPalidrom_helper(node right){
         if(right == null) return true;
-        
+
         if(!(isPalidrom_helper(right.next) && (left.val == right.val))) return false;
         left = left.next;
         return true;

@@ -31,14 +31,14 @@ int tab = 0;
 //             // cout << "Exit when meeting nullptr" << endl;
 //             return NULL;
 //         }
-        
+
 //         if(headA == headB) {
 //             // print_indent(--tab);
 //             // cout << "find identical head!!!" << endl;
 //             ListNode *ans = headA;
 //             return ans;
 //         }
-        
+
 //         ListNode *ans_1 = getIntersectionNode(headA->next, headB);
 //         if(ans_1 != NULL) {
 //             // print_indent(--tab);
@@ -52,7 +52,7 @@ int tab = 0;
 //             // cout << "find head!!!" << endl;
 //             return ans_1;
 //         }
-        
+
 //         // print_indent(--tab);
 //         // cout << "No head found with " << ((headA == NULL) ? 0 : headA->val) << " " << ((headB == NULL) ? 0 : headB->val) << endl;
 //         return NULL;
@@ -63,8 +63,8 @@ class Solution {
 public:
     // List A length = a(individual part) + c(intersection part)
     // List B length = b(individual part) + c(intersection part)
-    // so a + c + b = b + c + a which is the interection part
-    // if no interection then
+    // so a + c + b = b + c + a which is the intersection part
+    // if no intersection then
     // a + b = b + a, both reach end points
     // Time: O(m + n), Space: O(1)
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
@@ -79,7 +79,7 @@ public:
 
 int main(int argc, char** argv) {
     Solution s;
-    
+
     ListNode a(1);
     ListNode b(2);
     ListNode c(3);
