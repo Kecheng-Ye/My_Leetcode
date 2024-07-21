@@ -4,54 +4,98 @@ using namespace std;
 
 class Solution {
 public:
+    unordered_map<char, int> constructFreMap(const string& t) {
+        unordered_map<char, int> result;
+
+        for (const char c : t) {
+            result[c]++;
+        }
+
+        return result;
+    }
+
+    bool isTargetCovered(
+        const unordered_map<char, int>& target, const unordered_map<char, int>& curr
+    ) {
+        for (const auto& [c, targetFreq] : target) {
+            if (!curr.count(c) || (*curr.find(c)).second < targetFreq) return false;
+        }
+
+        return true;
+    }
+
+    // Time: O(54 * n), Space: O(1)
+    // string minWindow(string s, string t) {
+    //     const unordered_map<char, int> targetFreqMap = constructFreMap(t);
+
+    //     unordered_map<char, int> windowFreqMap;
+    //     int left = 0, right = 0;
+    //     const int n = s.size();
+    //     int currLen = INT_MAX;
+    //     pair<int, int> index;
+
+    //     while (right < n) {
+    //         windowFreqMap[s[right++]]++;
+
+    //         while (isTargetCovered(targetFreqMap, windowFreqMap)) {
+    //             if (right - left < currLen) {
+    //                 currLen = right - left;
+    //                 index.first = left;
+    //                 index.second = right;
+    //             }
+    //             windowFreqMap[s[left++]]--;
+    //         }
+    //     }
+
+    //     if (currLen == INT_MAX) return "";
+    //     return s.substr(index.first, currLen);
+    // }
+
+    // Time: O(n), Space: O(1)
     string minWindow(string s, string t) {
-        int m = s.size();
-        int n = t.size();
-        
-        if(m == 0 || n == 0) return "";
-        
-        unordered_map<char, int> need, window;
-        
-        for (char c : t) need[c]++;
-        
+        unordered_map<char, int> targetFreqMap = constructFreMap(t);
+
+        unordered_map<char, int> windowFreqMap;
         int left = 0, right = 0;
+        const int n = s.size();
         int valid = 0;
-        // 记录最小覆盖子串的起始索引及⻓度 
-        int start = 0, len = INT_MAX;
-        while (right < s.size()) {
-            // c 是将移入窗口的字符  
-            char c = s[right]; // 右移窗口
-            right++;
-            // 进行窗口内数据的一系列更新 
-            if (need.count(c)) {
-                window[c]++;
-                if (window[c] == need[c])
-                    valid++;
+        int currLen = INT_MAX;
+        pair<int, int> index;
+
+        while (right < n) {
+            windowFreqMap[s[right]]++;
+            if (
+                targetFreqMap.count(s[right]) && 
+                // devil here, cannot use '>=' because once we passed the required for one char
+                // should not increment valid anymore for following same character
+                targetFreqMap[s[right]] == windowFreqMap[s[right]]
+            ) {
+                valid++;
             }
+            right++;
             
-            // 判断左侧窗口是否要收缩
-            while (valid == need.size()) {
-                // 在这里更新最小覆盖子串
-                if (right - left < len) {
-                    start = left;
-                    len = right - left;
+            while (valid == targetFreqMap.size()) {
+                if (right - left < currLen) {
+                    currLen = right - left;
+                    index.first = left;
+                    index.second = right;
                 }
-                // d 是将移出窗口的字符 
-                char d = s[left];
-                // 左移窗口
+
+                windowFreqMap[s[left]]--;
+
+                if (
+                    targetFreqMap.count(s[left]) && 
+                    targetFreqMap[s[left]] > windowFreqMap[s[left]]
+                ) {
+                    valid--;
+                }
+
                 left++;
-                // 进行窗口内数据的一系列更新 
-                if (need.count(d)) {
-                    if (window[d] == need[d])
-                        valid--;
-                    window[d]--;
-                }
             }
         }
-        
-        // 返回最小覆盖子串
-        return len == INT_MAX ?
-            "" : s.substr(start, len);
+
+        if (currLen == INT_MAX) return "";
+        return s.substr(index.first, currLen);
     }
 };
 

@@ -52,7 +52,9 @@ public:
         int max_len = 0;
 
         for(int num : record) {
-            if(!record.count(num - 1)) { // only start counting if we meet a potential minimal value
+            // we've met a number that does not have a left neighbor
+            // which means it is the start point of a potential consecutive sequence
+            if(!record.count(num - 1)) {
                 int temp_ans = 1;
 
                 while(record.count(++num)) {

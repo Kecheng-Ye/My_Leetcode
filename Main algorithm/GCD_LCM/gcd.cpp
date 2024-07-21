@@ -4,10 +4,10 @@ using namespace std;
 
 class Algorithm{
 public:
-    int gcd_euclidan(int x, int y){
-        if (x < y) return gcd_euclidan(y, x);
+    int gcd_euclidean(int x, int y){
+        if (x < y) return gcd_euclidean(y, x);
 
-        return y == 0 ? x : gcd_euclidan(y, x % y);
+        return y == 0 ? x : gcd_euclidean(y, x % y);
     }
 
     int gcd_shift(int x, int y) {
