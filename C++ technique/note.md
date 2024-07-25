@@ -521,6 +521,8 @@ void merge(vector<int>& nums, vector<int>& temp, int start, int mid, int end) {
     * do inorder traverse by iteration
 
         ```cpp
+        #include <bits/stdc++.h>
+
         void inorder(TreeNode* root) {
             if(!root) return;
 
@@ -635,6 +637,7 @@ void merge(vector<int>& nums, vector<int>& temp, int start, int mid, int end) {
     ```
 
 * move zero to the end the array while keeping the original order of the array
+
     ```cpp
     class Solution {
     public:
@@ -665,7 +668,7 @@ void merge(vector<int>& nums, vector<int>& temp, int start, int mid, int end) {
 * Given two integers $n$ and $k$, construct a list answer that contains $n$ different positive integers ranging from $1$ to $n$ and obeys the following requirement:
     * Suppose this list is $answer = [a1, a2, a3, ... , an]$, then the list $[|a1 - a2|, |a2 - a3|, |a3 - a4|, ... , |an-1 - an|]$ has exactly $k$ distinct integers.
     * Return the list answer. If there multiple valid answers, return any of them.
-    
+
     ```cpp
     // [1, n, 2, n - 2, 3, ...] will result in a n - 1 distinct diff
     // Time: O(n), Space: O(1)
@@ -687,6 +690,7 @@ void merge(vector<int>& nums, vector<int>& temp, int start, int mid, int end) {
 
 * Graph
     * BFS
+
     ```cpp
     void BFS(vector<vector<int>>& graph) {
         queue<int> q;
@@ -721,6 +725,7 @@ void merge(vector<int>& nums, vector<int>& temp, int start, int mid, int end) {
     ```
 
     * DFS
+
     ```cpp
     void DFS(vector<vector<int>>& graph) {
         vector<bool> visited(graph.size(), false);
@@ -750,6 +755,7 @@ void merge(vector<int>& nums, vector<int>& temp, int start, int mid, int end) {
     ```
 
     * Topological sort
+
     ```cpp
     vector<bool> visited;
     vector<bool> on_path;
@@ -885,6 +891,7 @@ void merge(vector<int>& nums, vector<int>& temp, int start, int mid, int end) {
     ```
 
 * check majority element $|x| > \frac{arr.size()}{2}$ in a array
+
     ```cpp
     // Time: O(n), Space: O(1)
     int majorityElement(vector<int>& nums) {
@@ -900,7 +907,7 @@ void merge(vector<int>& nums, vector<int>& temp, int start, int mid, int end) {
     ```
 
 * test how many 5 in a $n!$
-    
+
     ```cpp
     int trailingZeroes(int n) {
         int result = 0;
