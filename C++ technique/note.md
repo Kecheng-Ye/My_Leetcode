@@ -61,6 +61,73 @@ int max = *max_element(nums.begin(), nums.end());
 int min = *min_element(nums.begin(), nums.end());
 ```
 
+* Hashing Function for std vector
+
+```cpp
+// Approach one
+struct hashFunction 
+{ 
+  long operator()(const pair<int, int> &x) const
+  { 
+    return x.first ^ x.second;
+  } 
+}; 
+
+unordered_set<pair<int, int>, hashFunction> _map;
+
+// Approach two
+template <>
+struct hash<pair<int, int>>
+{
+  size_t operator()(const pair<int, int>& k) const
+  {
+    const auto& hashFunc = hash<int>();
+
+    return ((hashFunc(k.first) ^ (hashFunc(k.second))));
+  }
+};
+
+unordered_set<pair<int, int>> _map;
+```
+
+* Hashing Function for custom obj
+  
+```cpp
+struct State {
+public:
+    bool operator== (const State &other) const {
+        // actual implementation
+    }
+}
+
+template<>
+struct hash<State> {
+    size_t operator() (const State& s) const {
+        // actual implementation
+    }
+};
+```
+
+* Override operation for std vector
+
+```cpp
+namespace std
+{
+    pair<int, int>& operator+= (pair<int, int>& lhs, const pair<int, int>& rhs) {
+        lhs.first += rhs.first;
+        lhs.second += rhs.second;
+        return lhs;
+    }
+
+    pair<int, int> operator+ (const pair<int, int>& self, const pair<int, int>& other)  {
+        return {
+            self.first + other.first,
+            self.second + other.second
+        };
+    }
+}
+```
+
 * string split
 
 ```cpp

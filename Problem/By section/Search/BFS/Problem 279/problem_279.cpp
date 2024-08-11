@@ -3,60 +3,66 @@
 using namespace std;
 
 class Solution {
-private:
-    bool perfect_square(int n) {
-        int limit = sqrt(n);
-        if(limit * limit == n) return true;
-
-        return false;
-    }
-
 public:
-    // Time: O(n), Space: O(sqrt(n)^sqrt(n))
+    // Time: O(n * sqrt(n)), Space: O(sqrt(n))
     int numSquares(int n) {
-        if(perfect_square(n)) return 1;
-
-        queue<int> q;
-        int result = 1;
-        bool record[n + 1];
-        
-        // should initialize array number for C++ 
-        for(auto& i : record) {
-            i = false;
+        if (isPerfectSqr(n)) {
+            return 1;
         }
+
+        const vector<int> sqrNums = perfectSqrs(n);
+        queue<int> q;
+        vector<bool> isVisited(n, false);
+        int step = 0;
 
         q.push(n);
 
-        while(!q.empty()) {
-            int this_layer = q.size();
+        while (!q.empty()) {
+            int levelSize = q.size();
+            step++;
 
-            while(this_layer) {
-                auto temp = q.front();
-                q.pop();
+            while (levelSize--) {
+                const int curr = q.front(); q.pop();
 
-                if(perfect_square(temp)) {
-                    return result;
+                if (curr == 0) {
+                    return step - 1;
                 }
 
-                for(int i = 1; i <= (int)sqrt(temp); i++) {
-                    int left = temp - pow(i, 2);
-                    
-                    // branch pruning
-                    if(left < 0) break;
+                for (const int candidate : sqrNums) {
+                    if (candidate > curr) break;
 
-                    if(record[left]) continue;
-
-                    q.push(left);
-                    record[left] = true;
+                    const int left = curr - candidate;
+                    if (!isVisited[left]) {
+                        isVisited[left] = true;
+                        q.push(left);
+                    }
                 }
-
-                this_layer--;
             }
-
-            result++;
-        } 
+        }
 
         return -1;
+
+    }
+
+    bool isPerfectSqr(const int num) {
+        const int _root = (int)sqrt((double) num);
+        return ((_root * _root) == num) || (((_root + 1) * (_root + 1)) == num);
+    }
+
+    vector<int> perfectSqrs(int limit) {
+        int curr = 1;
+        int diff = 3;
+        int step = 2;
+
+        vector<int> result;
+
+        while (curr < limit) {
+            result.push_back(curr);
+            curr += diff;
+            diff += step;
+        }
+
+        return result;
     }
 };
 
