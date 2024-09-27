@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <utility>
 
 using namespace std;
 
@@ -228,8 +229,28 @@ public:
 };
 
 int main(int argc, char** argv) {
-    Solution s;
-    vector<string> grid = {"@.a..","###.#","b.A.B"};
-    cout << s.shortestPathAllKeys(grid) << endl;
-    return 0;
+//    Solution s;
+//    vector<string> grid = {"@.a..","###.#","b.A.B"};
+//    cout << s.shortestPathAllKeys(grid) << endl;
+//    return 0;
+
+    std::string s = "scott>=tiger>=mushroom";
+    std::string delimiter = ">=";
+
+    size_t prevPos = 0;
+    size_t currPos = 0;
+    vector<string> result;
+    std::string token;
+    while (true) {
+        currPos = s.find(delimiter, prevPos);
+        token = s.substr(prevPos, currPos - prevPos);
+        result.push_back(token);
+
+        if (currPos == string::npos) {
+            break;
+        }
+
+        currPos += delimiter.size();
+        prevPos = currPos;
+    }
 }
