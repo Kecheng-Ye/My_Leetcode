@@ -5,33 +5,40 @@ using namespace std;
 class Solution {
 public:
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        if(candidates.size() == 0) return vector<vector<int>>();
+        const int n = candidates.size();
+
+        if (n == 1 && target != candidates[0]) return {};
+
+        vector<vector<int>> result;
+        vector<int> currComb;
 
         sort(candidates.begin(), candidates.end());
-        vector<vector<int>> result;
-        vector<int> singel_result;
-
-        backtrack(result, candidates, singel_result, target, 0);
-
-        return result;
-    }
-
-    void backtrack(vector<vector<int>>& result, vector<int>& candidates, vector<int>& singel_result, int target, int start_index) {
-        if(target < 0) {
-            return;
-        }else if(target == 0) {
-            result.push_back(singel_result);
-        }else{
-            int size = candidates.size();
-
-            for(int i = start_index; i < size; i++) {
-                singel_result.push_back(candidates[i]);
-
-                backtrack(result, candidates, singel_result, target - candidates[i], i);
-
-                singel_result.pop_back();
+        
+        const function<void(const int, const int)> backtrack = [&](const int idx, const int rest) {
+            if (rest == 0) {
+                result.push_back(currComb);
+                return;
             }
-        }
+
+            if (rest < 0) {
+                return;
+            }
+
+            for (int i = idx; i < n; i++) {
+                if (candidates[i] > rest) {
+                    break;
+                }
+
+                currComb.push_back(candidates[i]);
+                backtrack(i, rest - candidates[i]);
+                currComb.pop_back();
+            }
+
+            return;
+        };
+
+        backtrack(0, target);
+        return result;
     }
 };
 

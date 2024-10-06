@@ -38,35 +38,33 @@ public:
 
     // Time: O(n), Space: O(n)
     vector<int> topKFrequent(vector<int>& nums, int k) {
-        vector<int> result{};
-        unordered_map<int, int> freq_table;
+        const int n = nums.size();
+        if (n == 1) return {nums.front()};
 
-        for(int i : nums) {
-            freq_table[i]++;    
+        int maxFreq = 0;
+        unordered_map<int, int> freq;
+        for (const int& i : nums) {
+            freq[i]++;
+            maxFreq = max(maxFreq, freq[i]);
         }
 
-        
-        vector<vector<int>> buckets(nums.size() + 1);
-        
-        int max = 0;
-        for(auto& pair : freq_table) {
-            max = (pair.second > max) ? pair.second : max;
-            buckets[pair.second].push_back(pair.first);
+        vector<vector<int>> buckets(maxFreq + 1);
+
+        for (const auto& [num, frequency] : freq) {
+            buckets[frequency].push_back(num);
         }
-    
 
-        for(int i = max; i > 0 && k > 0; i--) {
-            if(buckets[i].size() == 0) continue;
+        vector<int> result(k);
+        for (int i = maxFreq; (i >= 0) && (k > 0); i--) {
+            if (buckets[i].empty()) continue;
 
-            for(auto ele : buckets[i]) {
-                if(k <= 0) break;
-                result.push_back(ele);
-                k--;
+            int bucketSize = buckets[i].size();
+            while (bucketSize-- && k--) {
+                result[k] = buckets[i][bucketSize];
             }
         }
 
         return result;
-        
     }
 };
 

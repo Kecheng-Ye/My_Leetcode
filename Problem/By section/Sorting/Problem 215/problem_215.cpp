@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <cstdlib>
 
 using namespace std;
 
@@ -28,57 +29,42 @@ public:
     // Time: O(n), Space: O(1)
     int findKthLargest(vector<int>& nums, int k) {
         int n = nums.size();
-        quickSort(nums, n, k, 0, n - 1);
-        return nums[n - k];
+        k = n - k;
+
+        const function<int(const int, const int)> quickSelect = [&](const int start, const int end) {
+            int piviot = rand() % (end - start) + start;
+            int position = partition(nums, start, end, piviot);
+
+            if(position == k) {
+                return nums[position];
+            } else if (position > k) {
+                return quickSelect(start, position - 1);
+            } else {
+                return quickSelect(position + 1, end);
+            }
+        };
+
+        return quickSelect(0, n - 1);
     }
 
-    void quickSort(vector<int>& nums, int n, int k, int start, int end) {
-        if(start >= end) return;
-
-        int piviot = rand() % (end - start) + start;
-        int position = partition(nums, start, end, piviot);
-
-        if(position == n - k) {
-            return;
-        }else if(position > n - k) {
-            quickSort(nums, n, k, start, position - 1);
-        }else{
-            quickSort(nums, n, k, position + 1, end);
-        }
-    }
 
     int partition(vector<int>&nums, int start, int end, int piviot) {
-        int target = nums[piviot];
-        swap(nums, end, piviot);
+        const int target = nums[piviot];
+        swap(nums[end], nums[piviot]);
 
-        int i = start;
-        int j = end - 1;
+        int nextP = start;
 
-        while(true) {
-            while(nums[i] <= target && i < end) {
-                i++;
+        for (int i = start; i < end; i++) {
+            if (nums[i] < target) {
+                if (i != nextP) swap(nums[i], nums[nextP]);
+                nextP++;
             }
-
-            while(nums[j] > target && j > i) {
-                j--;
-            }
-
-            if(i >= j) break;
-
-            swap(nums, i, j);
         }
 
-        if(i < end) swap(nums, i, end);
+        swap(nums[end], nums[piviot]);
 
-        return i;
+        return nextP;
     }
-
-    void swap(vector<int>&nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
-    }
-
 };
 
 int main(int argc, char** argv) {

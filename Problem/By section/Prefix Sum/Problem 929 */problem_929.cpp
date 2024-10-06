@@ -7,18 +7,27 @@ public:
     // we want left x zeros and right N-x ones
     // so we have to flip all the 1 in the [0 : x] part and all the 0 in [x :] part
     // Time: O(n), Space: O(n)
-    int minFlipsMonoIncr(string S) {
-        int N = S.length();
-        vector<int> P(N + 1);
-        for (int i = 0; i < N; ++i)
-            P[i+1] = P[i] + (S[i] == '1' ? 1 : 0);
+    int minFlipsMonoIncr(string s) {
+        const int n = s.size();
+        if (n == 1) return 0;
 
-        int ans = INT_MAX;
-        for (int j = 0; j <= N; ++j) {
-            ans = min(ans, P[j] + N-j-(P[N]-P[j]));
+        vector<int> zeros(n + 1);
+
+        for (int i = 0; i < n; i++) {
+            zeros[i + 1] = (s[i] == '0') + zeros[i];
         }
 
-        return ans;
+        int result = INT_MAX;
+        for (int i = 0; i <= n; i++) {
+            // make s[:i] to be zero
+            const int leftOnes = i - zeros[i];
+            // make s[i:] to be one
+            const int rightZeros = (zeros[n] - zeros[i]);
+
+            result = min(result, leftOnes + rightZeros);
+        }
+
+        return result;
     }
 };
 
