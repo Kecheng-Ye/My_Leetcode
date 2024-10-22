@@ -1067,3 +1067,8 @@ char change = (ori - '0' + k + 10) % 10 + '0'; // should first minus a character
     x & (x - 1) = delete lower one
     ```
 
+* Mod Operator
+
+```
+(a * b) % k = ((a % k) * (b % k)) % k
+```

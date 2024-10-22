@@ -32,6 +32,8 @@ public:
         k = n - k;
 
         const function<int(const int, const int)> quickSelect = [&](const int start, const int end) {
+            if (start == end) return nums[start];
+
             int piviot = rand() % (end - start) + start;
             int position = partition(nums, start, end, piviot);
 

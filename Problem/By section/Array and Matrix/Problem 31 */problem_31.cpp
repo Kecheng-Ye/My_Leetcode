@@ -5,37 +5,36 @@ using namespace std;
 class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
-        int n = nums.size();
+        const int n = nums.size();
+        if (n == 1) return;
+
+        int minIdx = n - 1;
+        int j = n - 1;
         
-        int j = n - 2;
-        
-        while(j >= 0) {
-            if(nums[j] < nums[j + 1]) break;
-            
+        // find j such that nums[j - 1] < nums[j]
+        while (j >= 1) {
+            const int currNum = nums[j];
+            const int prevNum = nums[j - 1];
+
+            if (prevNum < currNum) {
+                break;
+            }
             j--;
         }
-        
-        if(j == -1) {
+
+        if (j == 0) {
             reverse(nums.begin(), nums.end());
-        }else{
-            int target = -1;
-            
-            for(int i = j + 1; i < n; i++) {
-                if(nums[i] > nums[j]) {
-                    if(target < 0) {
-                        target = i;
-                    }else{
-                        target = (nums[i] <= nums[target]) ? i : target; 
-                    }
-                }
-            }
-            
-            int temp = nums[j];
-            nums[j] = nums[target];
-            nums[target] = temp;
-            
-            reverse(nums.begin() + j + 1, nums.end());
+            return;
         }
+
+        // find such k within nums[j+1 : ] and it is smallest among all number bigger than  nums[j - 1]
+        int closest = j;
+        while (closest < n && nums[closest] > nums[j - 1]) {
+            closest++;
+        }
+
+        swap(*(nums.begin() + j - 1), *(nums.begin() + closest - 1));
+        reverse(nums.begin() + j, nums.end());
     }
 };
 

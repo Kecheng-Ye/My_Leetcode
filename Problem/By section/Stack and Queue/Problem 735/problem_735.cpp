@@ -4,46 +4,36 @@ using namespace std;
 
 class Solution {
 public:
-    vector<int> asteroidCollision(vector<int>& asteroids) {
-        int n = asteroids.size();
-        if(n == 1) return asteroids;
-        
-        deque<int> dq;
+    // Time: O(n), Space: O(n)
+    vector<int> asteroidCollision(vector<int>& ast) {
+        int n = ast.size();
+        stack<int> s;
         for(int i = 0; i < n; i++) {
-            if(dq.empty()) {
-                dq.push_back(asteroids[i]);
-            }else{
-                if(asteroids[i] > 0) {
-                    dq.push_back(asteroids[i]);
-                }else{
-                    while(!dq.empty()) {
-                        auto prev = dq.back();
-                        if(prev < 0) {
-                            dq.push_back(asteroids[i]);
-                            break;
-                        }else{
-                            if(prev == abs(asteroids[i])) {
-                                dq.pop_back();
-                                break;
-                            }else if(prev > abs(asteroids[i])) {
-                                break;
-                            }else{
-                                dq.pop_back();
-                                
-                                if(dq.empty()) { 
-                                    dq.push_back(asteroids[i]);
-                                    break;
-                                }
-                            }
-                        }
+            if(ast[i] > 0 || s.empty()) {
+                s.push(ast[i]);
+            }
+            else {
+                while(!s.empty() and s.top() > 0 and s.top() < abs(ast[i])) {
+                    s.pop();
+                }
+                if(!s.empty() and s.top() == abs(ast[i])) {
+                    s.pop();
+                }
+                else {
+                    if(s.empty() || s.top() < 0) {
+                        s.push(ast[i]);
                     }
                 }
             }
         }
-        
-        vector<int> result(begin(dq), end(dq));
-        return result;
-        
+		// finally we are returning the elements which remains in the stack.
+		// we have to return them in reverse order.
+        vector<int> res(s.size());
+        for(int i = (int)s.size() - 1; i >= 0; i--) {
+            res[i] = s.top();
+            s.pop();
+        }
+        return res;
     }
 };
 

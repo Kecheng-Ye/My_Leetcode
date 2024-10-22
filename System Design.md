@@ -149,3 +149,12 @@
 [What is the best way to design a web site to be highly scalable?](http://programmers.stackexchange.com/a/108679/62739)
 
 [How web works?](https://github.com/vasanthk/how-web-works)
+
+## Middle Ware
+
+* Cassandra
+    * Good at handling massive amount of writes
+    * Uses a storage structure that resembles LSM (Log Structure Merge Tree)
+        * It writes inserts and updates in a log-like structure known as a memtable (in memory) 
+        * Periodically flushes these memtables to disk in files called SSTables
+    * SSTable, while optimized for reads of specific rows, are not optimized for range queries or aggregations

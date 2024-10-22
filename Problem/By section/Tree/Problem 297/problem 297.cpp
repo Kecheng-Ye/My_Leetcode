@@ -21,65 +21,54 @@ public:
 
     // Encodes a tree to a single string.
     string serialize(TreeNode* root) {
-        if(!root) return null_str;
-        
-        return to_string(root->val) + "[" + serialize(root->left) + "," + serialize(root->right) + "]";
-        
+        if (!root) return "";
+
+        return to_string(root->val) + "{" +  serialize(root->left) + "}" + "[" + serialize(root->right) + "]";
     }
 
     // Decodes your encoded data to tree.
     TreeNode* deserialize(string data) {
-        idx = 0;
-        
-        return helper(data);
+        int idx = 0;
+        cout << data << endl;
+        return deserializeHelper(data, idx);
     }
-    
-    TreeNode* helper(string& data) {
-        int num = 0;
-        TreeNode* cur;
-        if(!get_num(data, num)) {
-            cur = nullptr;
-        }else{
-            cur = new TreeNode(num);   
-        }
-        
-        if(data[idx] == '[') {
-            idx++;
-            cur->left = helper(data);
-            cur->right = helper(data);
-        }
-        
-        if(data[idx] == ']' || data[idx] == ',') {
-            idx++;
-        }
-        
-        return cur;
-    }
-    
-    bool get_num(string& data, int& result) {
-        if(isalpha(data[idx])) {
-            assert(data.substr(idx, 4) == null_str);
-            idx += 4;
-            return false;
-        }else{
-            int sign = 1;
-            if(data[idx] == '-') {
-                sign = -1;
-                idx++;
-            }
-            
-            int num = 0;
-            while(isdigit(data[idx])) {
-                num = num * 10 + (data[idx++] - '0');
-            }
-            
-            result = sign * num;
-            return true;
-        }
-    }
-    
+
 private:
-    int idx;
+    TreeNode* deserializeHelper(const string& data, int& idx) {
+        if (!isdigit(data[idx]) && data[idx] != '-') {
+            return nullptr;
+        } 
+
+        const int sign = data[idx] == '-' ? -1 : 1;
+        if (sign == -1) idx++;
+        const int value = readNum(data, idx);
+        TreeNode* result = new TreeNode(sign * value);
+
+        assert(data[idx] == '{');
+        idx++;
+        result->left = deserializeHelper(data, idx);
+        assert(data[idx] == '}');
+        idx++;
+
+        assert(data[idx] == '[');
+        idx++;
+        result->right = deserializeHelper(data, idx);
+        assert(data[idx] == ']');
+        idx++;
+
+        return result;
+    }
+
+    int readNum(const string& data, int& idx) {
+        int result = 0;
+
+        while (isdigit(data[idx])) {
+            result = result * 10 + (data[idx] - '0');
+            idx++;
+        }
+
+        return result;
+    }
 };
 
 int main(int argc, char** argv) {

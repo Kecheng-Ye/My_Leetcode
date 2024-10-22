@@ -76,32 +76,29 @@ using namespace std;
 // };
 
 // Hash function  
-struct hashFunction 
-{ 
-  long operator()(const pair<int, int> &x) const
-  { 
-    return x.first ^ x.second;
-  } 
-}; 
-
 template <>
 struct hash<pair<int, int>>
 {
   size_t operator()(const pair<int, int>& k) const
   {
-    const auto& hashFunc = hash<int>();
-
     return ((hashFunc(k.first) ^ (hashFunc(k.second))));
   }
+
+  static const hash<int> hashFunc;
 };
 
-namespace std
-{
-    pair<int, int>& operator+= (pair<int, int>& lhs, const pair<int, int>& rhs) {
-        lhs.first += rhs.first;
-        lhs.second += rhs.second;
-        return lhs;
-    }
+
+pair<int, int>& operator+= (pair<int, int>& lhs, const pair<int, int>& rhs) {
+    lhs.first += rhs.first;
+    lhs.second += rhs.second;
+    return lhs;
+}
+
+pair<int, int> operator+ (const pair<int, int>& lhs, const pair<int, int>& rhs) {
+    return {
+        lhs.first + rhs.first,
+        lhs.second + rhs.second
+    };
 }
 
 class Solution {
@@ -131,7 +128,7 @@ public:
                 
                 if (curr == destLoc) return true;
 
-                for (const auto newLoc : tryKick(maze, curr)) {
+                for (const auto& newLoc : tryKick(maze, curr)) {
                     if (!isVisited.count(newLoc)) {
                         q.push(newLoc);
                         isVisited.insert(newLoc);
@@ -148,7 +145,7 @@ private:
         vector<pair<int, int>> result;
 
         for (const auto& dir : directions) {
-            const pair<int, int> newLoc = kickOneDirection(maze, currLoc, dir);
+            const pair<int, int> newLoc = kickOneDirector(maze, currLoc, dir);
             if (newLoc != currLoc) {
                 result.push_back(newLoc);
             }
@@ -157,22 +154,21 @@ private:
         return result;
     }
 
-    pair<int, int> kickOneDirection(const vector<vector<int>>& maze, const pair<int, int>& currLoc, const pair<int, int>& direction) {
-        const auto hitBoundary = [&](const pair<int, int>& loc) -> bool {
+    pair<int, int> kickOneDirector(const vector<vector<int>>& maze, const pair<int, int>& currLoc, const pair<int, int>& direction) {
+        const auto hitBoundary = [&](const pair<int, int>& loc) {
             return (loc.first < 0 || loc.first >= maze.size() || loc.second < 0 || loc.second >= maze[0].size());
         };
 
-        const auto hitWall = [&](const pair<int, int>& loc) -> bool {
-            const pair<int, int> newLoc = {loc.first + direction.first, loc.second + direction.second};
+        const auto hitWall = [&](const pair<int, int>& loc) {
+            const pair<int, int> newLoc = loc + direction;
             if (hitBoundary(newLoc)) return true;
-            return maze[loc.first + direction.first][loc.second + direction.second] == 1;
+            return maze[newLoc.first][newLoc.second] == 1;
         };
         
         pair<int, int> curr = currLoc;
         
         while (!hitWall(curr)) {
-            curr.first += direction.first;
-            curr.second += direction.second;
+            curr += direction;
         }
 
         return curr;
